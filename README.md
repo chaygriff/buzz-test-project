@@ -35,11 +35,16 @@ python3 -m app.crawler.cli enrich-profiles \
   --candidates data/enrichment_candidates.jsonl \
   --out data/profile_enrichment.jsonl \
   --max-fetches-per-seed 10
+python3 -m app.crawler.cli import-profile-research \
+  --research RESEARCH/WETZSTEIN_PROFILE_ENRICHMENT_BATCH_1.md \
+  --out data/manual_profile_enrichment.jsonl
 ```
 
 Outbound enrichment stores Google Scholar, LinkedIn, and GitHub profile URLs as
 external identifiers by default. It only fetches supported HTML profile pages
 when robots.txt allows a depth-0 request.
+Manual people-research batches can be imported into the same enrichment JSONL
+record shape.
 
 ## Development
 

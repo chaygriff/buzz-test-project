@@ -1,4 +1,6 @@
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 from app.enrichment.outbound import (
@@ -7,6 +9,7 @@ from app.enrichment.outbound import (
     build_enrichment_candidates,
     classify_url,
     enrich_candidates,
+    import_manual_profile_research,
 )
 from app.models.records import EvidenceLink, RelationshipRecord
 
@@ -139,6 +142,43 @@ class OutboundEnrichmentTests(unittest.TestCase):
 
         self.assertEqual(records[0].fetch_status, "skipped")
         self.assertIn("unsupported content type", records[0].skip_reason)
+
+    def test_imports_manual_profile_research_markdown_payload(self):
+        with TemporaryDirectory() as tmpdir:
+            path = Path(tmpdir) / "batch.md"
+            path.write_text(
+                """
+                # Batch
+
+                ```json
+                [
+                  {
+                    "person_name": "Boyang Deng",
+                    "person_id": "person:example",
+                    "short_biography": "CS PhD candidate at Stanford.",
+                    "linkedin_url": "https://linkedin.com/in/boyang-deng-728978113",
+                    "google_scholar_url": "https://scholar.google.com/citations?user=Nr_uRhQAAAAJ",
+                    "github_url": "https://github.com/Awcrr",
+                    "personal_website_url": "https://boyangdeng.com/",
+                    "source_url": "https://boyangdeng.com/",
+                    "evidence_text": "Personal site says CS PhD candidate at Stanford.",
+                    "verification_status": "verified"
+                  }
+                ]
+                ```
+                """,
+                encoding="utf-8",
+            )
+
+            records = import_manual_profile_research(path)
+
+        self.assertEqual(len(records), 1)
+        self.assertEqual(records[0].fetch_status, "manual_research")
+        self.assertEqual(records[0].source_type, "people_research")
+        self.assertEqual(records[0].person_id, "person:example")
+        self.assertEqual(records[0].short_biography, "CS PhD candidate at Stanford.")
+        self.assertEqual(records[0].linkedin_url, "https://linkedin.com/in/boyang-deng-728978113")
+        self.assertEqual(records[0].verification_status, "verified")
 
 
 if __name__ == "__main__":

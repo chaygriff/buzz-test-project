@@ -9,6 +9,7 @@ from app.enrichment.outbound import (
     EnrichmentConfig,
     build_enrichment_candidates,
     enrich_candidates,
+    import_manual_profile_research,
     load_enrichment_candidates,
 )
 from app.extraction.relationship_normalizer import load_section_blocks, normalize_relationships
@@ -53,6 +54,10 @@ def build_parser() -> argparse.ArgumentParser:
     enrich.add_argument("--out", required=True, type=Path)
     enrich.add_argument("--max-fetches-per-seed", default=10, type=int)
     enrich.add_argument("--user-agent", default="TalentNetworkCollector/0.1 (+public evidence crawler)")
+
+    research = subcommands.add_parser("import-profile-research", help="Import manual people-research profile enrichment records")
+    research.add_argument("--research", required=True, type=Path)
+    research.add_argument("--out", required=True, type=Path)
 
     return parser
 
@@ -115,6 +120,11 @@ def main() -> None:
                 user_agent=args.user_agent,
             ),
         )
+        write_jsonl(args.out, records)
+        return
+
+    if args.command == "import-profile-research":
+        records = import_manual_profile_research(args.research)
         write_jsonl(args.out, records)
         return
 

@@ -359,3 +359,46 @@ def load_enrichment_candidates(path: Path) -> list[EnrichmentCandidateRecord]:
             if line.strip():
                 candidates.append(EnrichmentCandidateRecord(**json.loads(line)))
     return candidates
+
+
+def import_manual_profile_research(path: Path) -> list[ProfileEnrichmentRecord]:
+    payload = json.loads(extract_json_payload(path.read_text(encoding="utf-8")))
+    records: list[ProfileEnrichmentRecord] = []
+    for item in payload:
+        person_id = item["person_id"]
+        source_url = item["source_url"]
+        candidate = EnrichmentCandidateRecord(
+            candidate_id=deterministic_id("manual_candidate", person_id, source_url, item["evidence_text"]),
+            person_id=person_id,
+            person_name=item["person_name"],
+            relationship_id="manual_research",
+            url=source_url,
+            source_type="people_research",
+            source_url=source_url,
+            source_section=None,
+            evidence_text=item["evidence_text"],
+        )
+        records.append(
+            base_enrichment_record(
+                candidate,
+                fetch_status="manual_research",
+                skip_reason=None,
+                final_url=source_url,
+                verification_status=item.get("verification_status") or "manual_research",
+                profile_title=None,
+                homepage_claimed_name=item["person_name"],
+                short_biography=item.get("short_biography"),
+                personal_website_url=item.get("personal_website_url"),
+                github_url=item.get("github_url"),
+                google_scholar_url=item.get("google_scholar_url"),
+                linkedin_url=item.get("linkedin_url"),
+            )
+        )
+    return records
+
+
+def extract_json_payload(text: str) -> str:
+    fence_match = re.search(r"```json\s*(?P<payload>.*?)\s*```", text, flags=re.DOTALL)
+    if fence_match:
+        return fence_match.group("payload")
+    return text
