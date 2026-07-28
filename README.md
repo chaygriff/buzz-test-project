@@ -22,6 +22,12 @@ No AI extraction is implemented in Phase 1.
 ```bash
 python3 -m app.crawler.cli crawl --seeds seeds/faculty.example.csv --out data
 python3 -m app.crawler.cli parse-cache --cache data/cache --out data/sections.jsonl
+python3 -m app.crawler.cli normalize-sections \
+  --sections data/sections.jsonl \
+  --out data/relationships.jsonl \
+  --faculty-name "Example Professor" \
+  --faculty-institution "Example University" \
+  --faculty-homepage "https://example.edu/professor"
 ```
 
 ## Development

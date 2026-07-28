@@ -14,7 +14,11 @@ class RelationshipRecord:
     normalized_relationship: str | None
     status: str | None
     degree: str | None
+    start_year: int | None
+    end_year: int | None
     graduation_year: int | None
+    co_advisor: str | None
+    fellowship: str | None
     current_destination: str | None
     source_url: str
     page_section: str | None
@@ -22,4 +26,3 @@ class RelationshipRecord:
     confidence: float | None
     verification_status: str
     retrieved_at: str | None
-
