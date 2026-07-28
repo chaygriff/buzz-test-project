@@ -136,6 +136,9 @@ class OutboundEnrichmentTests(unittest.TestCase):
         self.assertIn("Gordon Wetzstein", candidates[0].search_query)
         self.assertIn("Research Scientist at Google", candidates[0].search_query)
         self.assertIn("Run people-research", candidates[0].research_guidance[0])
+        self.assertIn("Stanford University", candidates[0].research_guidance[1])
+        self.assertIn("Gordon Wetzstein", candidates[0].research_guidance[1])
+        self.assertIn("web.stanford.edu", candidates[0].research_guidance[1])
         self.assertEqual(candidates[0].verification_status, "needs_people_research")
 
     def test_backfill_candidates_exclude_already_enriched_people(self):

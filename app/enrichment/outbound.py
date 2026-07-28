@@ -236,8 +236,11 @@ def backfill_search_terms(record: RelationshipRecord) -> list[str]:
         record.person_name or "",
         record.faculty_name or "",
         record.faculty_institution or "",
-        "Computational Imaging Lab",
     ]
+    if record.faculty_homepage:
+        host = urlparse(record.faculty_homepage).netloc
+        if host:
+            terms.append(host)
     if record.normalized_relationship:
         terms.append(record.normalized_relationship.replace("_", " "))
     if record.start_year or record.end_year:
@@ -256,9 +259,23 @@ def backfill_search_terms(record: RelationshipRecord) -> list[str]:
 
 
 def backfill_research_guidance(record: RelationshipRecord) -> list[str]:
+    faculty_context = " or ".join(
+        context
+        for context in [
+            record.faculty_institution,
+            record.faculty_name,
+            urlparse(record.faculty_homepage).netloc if record.faculty_homepage else None,
+        ]
+        if context
+    )
+    evidence_rule = (
+        f"Require public evidence tying the person to {faculty_context} before marking verified."
+        if faculty_context
+        else "Require public evidence tying the person to the seed source before marking verified."
+    )
     guidance = [
         "Run people-research with the full context-rich search query, not name-only search.",
-        "Require public evidence tying the person to Stanford, Gordon Wetzstein, or the Computational Imaging Lab before marking verified.",
+        evidence_rule,
         "Leave URLs null or mark needs_review when attribution is weak.",
     ]
     if record.normalized_relationship == "visitor":

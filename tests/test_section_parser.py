@@ -1,6 +1,9 @@
 import unittest
+import json
+from pathlib import Path
+from tempfile import TemporaryDirectory
 
-from app.extraction.section_parser import parse_sections
+from app.extraction.section_parser import parse_cached_pages, parse_sections
 
 
 class SectionParserTests(unittest.TestCase):
@@ -62,6 +65,54 @@ class SectionParserTests(unittest.TestCase):
 
         self.assertEqual(blocks[0].heading_path, ["Short Biography"])
         self.assertIn("Associate Professor", blocks[0].text)
+
+    def test_parses_hidden_panel_list_items_with_implicit_li_boundaries(self):
+        html = """
+        <div id="alumniDiv" class="hideClass">
+          <span class="panel-label">ALUMNI</span>
+          <ol>
+            <li> Shruti Agarwal (Ph.D., 2021) [<a href="downloads/sathesis21.pdf">dissertation</a>]
+            <li> <a href="https://www.matyasbohacek.com">Maty Bohacek</a>
+            <li> Tiago Carvalho (visiting Ph.D. student, UNICAMP, Brazil, 2014)
+          </ol>
+        </div>
+        """
+
+        blocks = parse_sections(html, "https://hfarid.org/")
+
+        alumni_blocks = [block for block in blocks if block.heading_path == ["Alumni"]]
+        self.assertEqual(len(alumni_blocks), 3)
+        self.assertEqual(alumni_blocks[0].text, "Shruti Agarwal (Ph.D., 2021) [ dissertation ]")
+        self.assertEqual(alumni_blocks[0].links[0].url, "https://hfarid.org/downloads/sathesis21.pdf")
+        self.assertEqual(alumni_blocks[1].text, "Maty Bohacek")
+        self.assertEqual(alumni_blocks[1].links[0].url, "https://www.matyasbohacek.com")
+
+    def test_parse_cached_pages_skips_duplicate_html_bodies(self):
+        html = """
+        <div id="alumniDiv" class="hideClass">
+          <span class="panel-label">ALUMNI</span>
+          <ol><li> Shruti Agarwal (Ph.D., 2021)</ol>
+        </div>
+        """
+        with TemporaryDirectory() as tmpdir:
+            cache_dir = Path(tmpdir)
+            root_html = cache_dir / "root.html"
+            fragment_html = cache_dir / "fragment.html"
+            root_html.write_text(html, encoding="utf-8")
+            fragment_html.write_text(html, encoding="utf-8")
+            (cache_dir / "root.json").write_text(
+                json.dumps({"url": "https://hfarid.org/", "html_path": str(root_html)}),
+                encoding="utf-8",
+            )
+            (cache_dir / "fragment.json").write_text(
+                json.dumps({"url": "https://hfarid.org/#alumniDiv", "html_path": str(fragment_html)}),
+                encoding="utf-8",
+            )
+
+            blocks = parse_cached_pages(cache_dir)
+
+        self.assertEqual(len([block for block in blocks if block.heading_path == ["Alumni"]]), 1)
+        self.assertEqual(blocks[0].source_url, "https://hfarid.org/")
 
 
 if __name__ == "__main__":
