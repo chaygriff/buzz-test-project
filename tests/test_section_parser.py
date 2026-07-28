@@ -20,7 +20,36 @@ class SectionParserTests(unittest.TestCase):
         self.assertEqual(blocks[1].heading_path, ["People", "Current PhD Students"])
         self.assertEqual(blocks[1].text, "Alex Lee")
 
+    def test_parses_legacy_strong_label_and_table_rows(self):
+        html = """
+        <strong>Students supervised</strong>
+        <table>
+          <tr><td>PhD</td><td><a href="https://example.com/alex">Alex Lee</a>, Stanford University (CS), 2022-</td></tr>
+          <tr><td></td><td>Jane Smith, Stanford University (EE), 2023-, co-advised</td></tr>
+          <tr><td>Alumni PhD Students</td><td>Sam Rivera, Stanford University (EE), 2018-2023, now at Example AI</td></tr>
+        </table>
+        """
+
+        blocks = parse_sections(html, "https://web.stanford.edu/~example/")
+
+        self.assertEqual(blocks[0].heading_path, ["Students supervised", "PhD"])
+        self.assertEqual(blocks[0].text, "Alex Lee, Stanford University (CS), 2022-")
+        self.assertEqual(blocks[1].heading_path, ["Students supervised", "PhD"])
+        self.assertEqual(blocks[1].text, "Jane Smith, Stanford University (EE), 2023-, co-advised")
+        self.assertEqual(blocks[2].heading_path, ["Students supervised", "Alumni PhD Students"])
+        self.assertIn("now at Example AI", blocks[2].text)
+
+    def test_parses_strong_labeled_biography_paragraph(self):
+        html = """
+        <p><strong>Short Biography:</strong> Gordon Wetzstein is an Associate Professor
+        of Electrical Engineering and, by courtesy, of Computer Science at Stanford University.</p>
+        """
+
+        blocks = parse_sections(html, "https://web.stanford.edu/~example/")
+
+        self.assertEqual(blocks[0].heading_path, ["Short Biography"])
+        self.assertIn("Associate Professor", blocks[0].text)
+
 
 if __name__ == "__main__":
     unittest.main()
-
