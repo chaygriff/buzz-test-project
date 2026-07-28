@@ -2,6 +2,7 @@ import unittest
 
 from app.extraction.relationship_normalizer import normalize_relationship_block, normalize_relationships
 from app.extraction.section_parser import SectionBlock
+from app.models.records import EvidenceLink
 
 
 class RelationshipNormalizerTests(unittest.TestCase):
@@ -29,6 +30,20 @@ class RelationshipNormalizerTests(unittest.TestCase):
         self.assertEqual(record.co_advisor, "Leo Guibas")
         self.assertEqual(record.fellowship, "Meta Research PhD Fellowship")
         self.assertEqual(record.page_section, "Students supervised > PhD")
+
+    def test_sets_person_profile_url_from_matching_section_link(self):
+        block = SectionBlock(
+            source_url="https://web.stanford.edu/~gordonwz/",
+            heading_path=["Students supervised", "PhD"],
+            text="Boyang Deng, Stanford University (CS), 2022-",
+            links=[EvidenceLink(text="Boyang Deng", url="https://boyangdeng.com/")],
+        )
+
+        record = normalize_relationship_block(block)
+
+        self.assertIsNotNone(record)
+        self.assertEqual(record.person_profile_url, "https://boyangdeng.com/")
+        self.assertEqual(record.source_links, block.links)
 
     def test_normalizes_alumni_destination_and_graduation_year(self):
         block = SectionBlock(

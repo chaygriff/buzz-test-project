@@ -5,7 +5,7 @@ import re
 from pathlib import Path
 
 from app.extraction.section_parser import SectionBlock
-from app.models.records import RelationshipRecord
+from app.models.records import EvidenceLink, RelationshipRecord
 
 
 RELATIONSHIP_BY_CATEGORY = {
@@ -56,13 +56,15 @@ def normalize_relationship_block(
     normalized_relationship, status, degree = relationship_from_category(category)
     if normalized_relationship is None:
         return None
+    person_name = extract_person_name(block.text)
+    person_profile_url = select_person_profile_url(person_name, block.links)
 
     return RelationshipRecord(
         faculty_name=faculty_name,
         faculty_institution=faculty_institution,
         faculty_homepage=faculty_homepage,
-        person_name=extract_person_name(block.text),
-        person_profile_url=None,
+        person_name=person_name,
+        person_profile_url=person_profile_url,
         raw_relationship=category,
         normalized_relationship=normalized_relationship,
         status=status,
@@ -79,6 +81,7 @@ def normalize_relationship_block(
         confidence=0.75,
         verification_status="parsed",
         retrieved_at=None,
+        source_links=block.links,
     )
 
 
@@ -93,6 +96,24 @@ def normalize_category(category: str) -> str:
 def extract_person_name(text: str) -> str | None:
     name = text.split(",", 1)[0].strip()
     return name or None
+
+
+def select_person_profile_url(person_name: str | None, links: list[EvidenceLink]) -> str | None:
+    if not person_name:
+        return None
+    person_key = normalize_link_text(person_name)
+    for link in links:
+        if normalize_link_text(link.text) == person_key:
+            return link.url
+    for link in links:
+        link_key = normalize_link_text(link.text)
+        if person_key and (person_key in link_key or link_key in person_key):
+            return link.url
+    return None
+
+
+def normalize_link_text(value: str) -> str:
+    return re.sub(r"\s+", " ", value.lower()).strip()
 
 
 def extract_start_year(text: str) -> int | None:
@@ -138,6 +159,10 @@ def load_section_blocks(path: Path) -> list[SectionBlock]:
                     source_url=payload["source_url"],
                     heading_path=list(payload["heading_path"]),
                     text=payload["text"],
+                    links=[
+                        EvidenceLink(text=link["text"], url=link["url"])
+                        for link in payload.get("links", [])
+                    ],
                 )
             )
     return blocks

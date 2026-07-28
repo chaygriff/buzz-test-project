@@ -34,10 +34,23 @@ class SectionParserTests(unittest.TestCase):
 
         self.assertEqual(blocks[0].heading_path, ["Students supervised", "PhD"])
         self.assertEqual(blocks[0].text, "Alex Lee, Stanford University (CS), 2022-")
+        self.assertEqual(blocks[0].links[0].text, "Alex Lee")
+        self.assertEqual(blocks[0].links[0].url, "https://example.com/alex")
         self.assertEqual(blocks[1].heading_path, ["Students supervised", "PhD"])
         self.assertEqual(blocks[1].text, "Jane Smith, Stanford University (EE), 2023-, co-advised")
         self.assertEqual(blocks[2].heading_path, ["Students supervised", "Alumni PhD Students"])
         self.assertIn("now at Example AI", blocks[2].text)
+
+    def test_resolves_relative_links_against_source_url(self):
+        html = """
+        <h1>Students supervised</h1>
+        <h2>PhD</h2>
+        <ul><li><a href="/people/alex">Alex Lee</a>, Stanford University (CS), 2022-</li></ul>
+        """
+
+        blocks = parse_sections(html, "https://lab.example.edu/faculty")
+
+        self.assertEqual(blocks[0].links[0].url, "https://lab.example.edu/people/alex")
 
     def test_parses_strong_labeled_biography_paragraph(self):
         html = """

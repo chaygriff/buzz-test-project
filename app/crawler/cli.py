@@ -8,6 +8,7 @@ from app.crawler.seeds import load_faculty_seeds
 from app.extraction.relationship_normalizer import load_section_blocks, normalize_relationships
 from app.extraction.section_parser import parse_cached_pages
 from app.exports.jsonl import write_jsonl
+from app.resolution.entity_resolver import load_relationship_records, resolve_relationship_entities
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -31,6 +32,10 @@ def build_parser() -> argparse.ArgumentParser:
     normalize.add_argument("--faculty-name")
     normalize.add_argument("--faculty-institution")
     normalize.add_argument("--faculty-homepage")
+
+    resolve = subcommands.add_parser("resolve-relationships", help="Resolve relationship records into canonical entity tables")
+    resolve.add_argument("--relationships", required=True, type=Path)
+    resolve.add_argument("--out-dir", required=True, type=Path)
 
     return parser
 
@@ -62,6 +67,17 @@ def main() -> None:
             faculty_homepage=args.faculty_homepage,
         )
         write_jsonl(args.out, records)
+        return
+
+    if args.command == "resolve-relationships":
+        records = load_relationship_records(args.relationships)
+        result = resolve_relationship_entities(records)
+        write_jsonl(args.out_dir / "people.jsonl", result.people)
+        write_jsonl(args.out_dir / "faculty.jsonl", result.faculty)
+        write_jsonl(args.out_dir / "organizations.jsonl", result.organizations)
+        write_jsonl(args.out_dir / "relationships.jsonl", result.relationships)
+        write_jsonl(args.out_dir / "evidence_sources.jsonl", result.evidence_sources)
+        write_jsonl(args.out_dir / "resolution_decisions.jsonl", result.resolution_decisions)
         return
 
     raise ValueError(f"Unhandled command: {args.command}")
