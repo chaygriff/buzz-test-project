@@ -5,5 +5,4 @@ description = "Phase 1 deterministic crawler and parser for talent network relat
 requires-python = ">=3.11"
 
 [tool.setuptools]
-packages = ["app", "app.crawler", "app.extraction", "app.exports", "app.models", "app.review"]
-
+packages = ["app", "app.crawler", "app.enrichment", "app.extraction", "app.exports", "app.models", "app.resolution", "app.review"]

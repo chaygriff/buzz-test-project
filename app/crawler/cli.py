@@ -5,6 +5,12 @@ from pathlib import Path
 
 from app.crawler.crawler import CrawlConfig, TalentCrawler
 from app.crawler.seeds import load_faculty_seeds
+from app.enrichment.outbound import (
+    EnrichmentConfig,
+    build_enrichment_candidates,
+    enrich_candidates,
+    load_enrichment_candidates,
+)
 from app.extraction.relationship_normalizer import load_section_blocks, normalize_relationships
 from app.extraction.section_parser import parse_cached_pages
 from app.exports.jsonl import write_jsonl
@@ -36,6 +42,17 @@ def build_parser() -> argparse.ArgumentParser:
     resolve = subcommands.add_parser("resolve-relationships", help="Resolve relationship records into canonical entity tables")
     resolve.add_argument("--relationships", required=True, type=Path)
     resolve.add_argument("--out-dir", required=True, type=Path)
+
+    queue = subcommands.add_parser("build-enrichment-queue", help="Build bounded outbound enrichment candidates")
+    queue.add_argument("--relationships", required=True, type=Path)
+    queue.add_argument("--out", required=True, type=Path)
+    queue.add_argument("--max-candidates-per-person", default=3, type=int)
+
+    enrich = subcommands.add_parser("enrich-profiles", help="Fetch allowed outbound profile pages and emit enrichment records")
+    enrich.add_argument("--candidates", required=True, type=Path)
+    enrich.add_argument("--out", required=True, type=Path)
+    enrich.add_argument("--max-fetches-per-seed", default=10, type=int)
+    enrich.add_argument("--user-agent", default="TalentNetworkCollector/0.1 (+public evidence crawler)")
 
     return parser
 
@@ -78,6 +95,27 @@ def main() -> None:
         write_jsonl(args.out_dir / "relationships.jsonl", result.relationships)
         write_jsonl(args.out_dir / "evidence_sources.jsonl", result.evidence_sources)
         write_jsonl(args.out_dir / "resolution_decisions.jsonl", result.resolution_decisions)
+        return
+
+    if args.command == "build-enrichment-queue":
+        records = load_relationship_records(args.relationships)
+        candidates = build_enrichment_candidates(
+            records,
+            max_candidates_per_person=args.max_candidates_per_person,
+        )
+        write_jsonl(args.out, candidates)
+        return
+
+    if args.command == "enrich-profiles":
+        candidates = load_enrichment_candidates(args.candidates)
+        records = enrich_candidates(
+            candidates,
+            config=EnrichmentConfig(
+                max_fetches_per_seed=args.max_fetches_per_seed,
+                user_agent=args.user_agent,
+            ),
+        )
+        write_jsonl(args.out, records)
         return
 
     raise ValueError(f"Unhandled command: {args.command}")
