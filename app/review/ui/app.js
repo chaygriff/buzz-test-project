@@ -22,6 +22,7 @@ const state = {
 };
 
 const el = {
+  datasetLabel: document.querySelector("#datasetLabel"),
   lastLoaded: document.querySelector("#lastLoaded"),
   peopleCount: document.querySelector("#peopleCount"),
   relationshipCount: document.querySelector("#relationshipCount"),
@@ -151,6 +152,9 @@ function bindEvents() {
 }
 
 function render() {
+  if (state.metadata?.dataset_label) {
+    el.datasetLabel.textContent = state.metadata.dataset_label;
+  }
   el.peopleCount.textContent = state.people.length.toLocaleString();
   el.relationshipCount.textContent = state.relationships.length.toLocaleString();
   el.organizationCount.textContent = state.organizations.length.toLocaleString();
