@@ -154,7 +154,7 @@ button:focus {
 
 .metrics {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 14px;
   margin-bottom: 18px;
 }
@@ -303,10 +303,20 @@ tbody tr.active {
 }
 
 .relationship-card,
+.profile-card,
 .decision-card {
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 12px;
+  background: #fbfcfb;
+}
+
+.profile-card {
+  margin-bottom: 10px;
+  background: #f7fbfb;
+}
+
+.muted-card {
   background: #fbfcfb;
 }
 
@@ -316,16 +326,25 @@ tbody tr.active {
 }
 
 .relationship-card h3,
+.profile-card h3,
 .decision-card h3 {
   margin: 0 0 6px;
   font-size: 0.95rem;
 }
 
 .relationship-card p,
+.profile-card p,
 .decision-card p {
   margin-bottom: 6px;
   color: #34413b;
   font-size: 0.86rem;
+}
+
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 12px;
+  margin-bottom: 12px;
 }
 
 a {
@@ -372,6 +391,10 @@ a {
   }
 
   .metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .link-grid {
     grid-template-columns: 1fr;
   }
 

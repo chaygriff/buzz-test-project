@@ -40,6 +40,7 @@
           <label for="reviewFilter">Review focus</label>
           <select id="reviewFilter">
             <option value="">All records</option>
+            <option value="has_enrichment">Has profile enrichment</option>
             <option value="missing_profile">Missing profile URL</option>
             <option value="co_advisor">Has co-advisor raw name</option>
             <option value="destination">Has current destination</option>
@@ -64,6 +65,10 @@
           <article>
             <span id="decisionCount">0</span>
             <p>Merge decisions</p>
+          </article>
+          <article>
+            <span id="enrichmentCount">0</span>
+            <p>Enriched profiles</p>
           </article>
         </section>
 

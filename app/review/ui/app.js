@@ -4,6 +4,7 @@ const DATASETS = {
   organizations: "data/organizations.jsonl",
   evidence: "data/evidence_sources.jsonl",
   decisions: "data/resolution_decisions.jsonl",
+  profileEnrichments: "data/profile_enrichments.jsonl",
 };
 
 const state = {
@@ -12,6 +13,7 @@ const state = {
   organizations: [],
   evidence: [],
   decisions: [],
+  profileEnrichments: [],
   filters: {
     search: "",
     status: "",
@@ -27,6 +29,7 @@ const el = {
   relationshipCount: document.querySelector("#relationshipCount"),
   organizationCount: document.querySelector("#organizationCount"),
   decisionCount: document.querySelector("#decisionCount"),
+  enrichmentCount: document.querySelector("#enrichmentCount"),
   resultCount: document.querySelector("#resultCount"),
   rows: document.querySelector("#relationshipRows"),
   search: document.querySelector("#searchInput"),
@@ -44,6 +47,7 @@ const index = {
   people: new Map(),
   organizations: new Map(),
   evidenceByRelationship: new Map(),
+  enrichmentByPerson: new Map(),
 };
 
 async function loadJsonl(path) {
@@ -61,14 +65,15 @@ async function loadJsonl(path) {
 
 async function init() {
   try {
-    const [people, relationships, organizations, evidence, decisions] = await Promise.all([
+    const [people, relationships, organizations, evidence, decisions, profileEnrichments] = await Promise.all([
       loadJsonl(DATASETS.people),
       loadJsonl(DATASETS.relationships),
       loadJsonl(DATASETS.organizations),
       loadJsonl(DATASETS.evidence),
       loadJsonl(DATASETS.decisions),
+      loadJsonl(DATASETS.profileEnrichments),
     ]);
-    Object.assign(state, { people, relationships, organizations, evidence, decisions });
+    Object.assign(state, { people, relationships, organizations, evidence, decisions, profileEnrichments });
     buildIndexes();
     populateFilters();
     bindEvents();
@@ -86,6 +91,11 @@ function buildIndexes() {
   index.evidenceByRelationship = new Map();
   for (const evidence of state.evidence) {
     index.evidenceByRelationship.set(evidence.relationship_id, evidence);
+  }
+  index.enrichmentByPerson = new Map();
+  for (const enrichment of state.profileEnrichments) {
+    if (!enrichment.person_id || index.enrichmentByPerson.has(enrichment.person_id)) continue;
+    index.enrichmentByPerson.set(enrichment.person_id, enrichment);
   }
 }
 
@@ -136,6 +146,7 @@ function render() {
   el.relationshipCount.textContent = state.relationships.length.toLocaleString();
   el.organizationCount.textContent = state.organizations.length.toLocaleString();
   el.decisionCount.textContent = state.decisions.length.toLocaleString();
+  el.enrichmentCount.textContent = state.profileEnrichments.length.toLocaleString();
   renderRelationships();
   renderDecisions();
 }
@@ -153,6 +164,7 @@ function filteredRelationships() {
   return state.relationships.filter((record) => {
     if (state.filters.status && record.status !== state.filters.status) return false;
     if (state.filters.type && record.relationship_type !== state.filters.type) return false;
+    if (state.filters.review === "has_enrichment" && !index.enrichmentByPerson.has(record.person_id)) return false;
     if (state.filters.review === "missing_profile" && getPerson(record.person_id).profile_urls.length > 0) return false;
     if (state.filters.review === "co_advisor" && !record.co_advisor_name_raw) return false;
     if (state.filters.review === "destination" && !record.current_destination_raw) return false;
@@ -177,6 +189,7 @@ function searchableText(record) {
     record.fellowship,
     record.co_advisor_name_raw,
     evidence?.evidence_text,
+    index.enrichmentByPerson.get(record.person_id)?.short_biography,
   ]
     .filter(Boolean)
     .join(" ")
@@ -210,8 +223,9 @@ function selectPerson(personId) {
 function renderPersonDetail(personId) {
   const person = getPerson(personId);
   const records = state.relationships.filter((record) => record.person_id === personId);
+  const enrichment = index.enrichmentByPerson.get(personId);
   el.detailName.textContent = person.display_name;
-  el.detailMeta.textContent = `${records.length} relationship${records.length === 1 ? "" : "s"} · ${person.resolution_status}`;
+  el.detailMeta.textContent = `${records.length} relationship${records.length === 1 ? "" : "s"} · ${person.resolution_status}${enrichment ? " · profile enriched" : ""}`;
   el.personDetail.className = "detail-body";
   el.personDetail.innerHTML = `
     <dl class="detail-grid">
@@ -220,7 +234,33 @@ function renderPersonDetail(personId) {
       <dt>Profiles</dt><dd>${formatProfileLinks(person.profile_urls)}</dd>
       <dt>Role</dt><dd>${escapeHtml(valueOrNA(person.primary_role))}</dd>
     </dl>
+    ${renderEnrichmentCard(enrichment)}
     ${records.map(renderRelationshipCard).join("")}
+  `;
+}
+
+function renderEnrichmentCard(enrichment) {
+  if (!enrichment) {
+    return `
+      <article class="profile-card muted-card">
+        <h3>Profile enrichment ${tag("N/A")}</h3>
+        <p>No manual profile enrichment has been imported for this person yet.</p>
+      </article>
+    `;
+  }
+  return `
+    <article class="profile-card">
+      <h3>Profile enrichment ${tag(titleize(enrichment.verification_status), enrichment.verification_status)}</h3>
+      <p>${escapeHtml(valueOrNA(enrichment.short_biography))}</p>
+      <div class="link-grid">
+        ${formatNamedLink("Website", enrichment.personal_website_url)}
+        ${formatNamedLink("Google Scholar", enrichment.google_scholar_url)}
+        ${formatNamedLink("LinkedIn", enrichment.linkedin_url)}
+        ${formatNamedLink("GitHub", enrichment.github_url)}
+      </div>
+      <p><strong>Evidence:</strong> ${escapeHtml(valueOrNA(enrichment.evidence_text))}</p>
+      <p><strong>Source:</strong> ${formatNamedLink(valueOrNA(enrichment.source_url), enrichment.source_url)}</p>
+    </article>
   `;
 }
 
@@ -288,6 +328,11 @@ function formatSourceLink(evidence) {
   if (!evidence?.source_url) return "N/A";
   const section = evidence.source_section ? ` · ${escapeHtml(evidence.source_section)}` : "";
   return `<a href="${escapeAttr(evidence.source_url)}" target="_blank" rel="noreferrer">${escapeHtml(evidence.source_url)}</a>${section}`;
+}
+
+function formatNamedLink(label, url) {
+  if (!url) return `<span class="muted">${escapeHtml(label)}: N/A</span>`;
+  return `<a href="${escapeAttr(url)}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a>`;
 }
 
 function tag(label, variant = "") {

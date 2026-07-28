@@ -19,6 +19,7 @@ class ReviewUiAssetTests(unittest.TestCase):
             "organizations.jsonl",
             "evidence_sources.jsonl",
             "resolution_decisions.jsonl",
+            "profile_enrichments.jsonl",
         ]
 
         for filename in expected_files:
@@ -32,10 +33,12 @@ class ReviewUiAssetTests(unittest.TestCase):
         people = read_jsonl(DATA_DIR / "people.jsonl")
         relationships = read_jsonl(DATA_DIR / "relationships.jsonl")
         decisions = read_jsonl(DATA_DIR / "resolution_decisions.jsonl")
+        enrichments = read_jsonl(DATA_DIR / "profile_enrichments.jsonl")
 
         self.assertEqual(len(people), 87)
         self.assertEqual(len(relationships), 88)
         self.assertEqual(len(decisions), 2)
+        self.assertEqual(len(enrichments), 42)
 
 
 def read_jsonl(path: Path) -> list[dict]:
