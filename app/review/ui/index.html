@@ -41,6 +41,9 @@
           <select id="reviewFilter">
             <option value="">All records</option>
             <option value="has_enrichment">Has profile enrichment</option>
+            <option value="missing_enrichment">Missing profile enrichment</option>
+            <option value="needs_backfill">No-link backfill queued</option>
+            <option value="reconciliation">Needs profile reconciliation</option>
             <option value="missing_profile">Missing profile URL</option>
             <option value="co_advisor">Has co-advisor raw name</option>
             <option value="destination">Has current destination</option>
@@ -69,6 +72,10 @@
           <article>
             <span id="enrichmentCount">0</span>
             <p>Enriched profiles</p>
+          </article>
+          <article>
+            <span id="backfillCount">0</span>
+            <p>Backfill queued</p>
           </article>
         </section>
 

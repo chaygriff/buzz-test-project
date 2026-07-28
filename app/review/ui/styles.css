@@ -154,7 +154,7 @@ button:focus {
 
 .metrics {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 14px;
   margin-bottom: 18px;
 }
@@ -261,6 +261,22 @@ tbody tr.active {
   color: var(--warning);
 }
 
+.tag.needs_review,
+.tag.high {
+  background: #f9e1d5;
+  color: #8c3d18;
+}
+
+.tag.medium {
+  background: #f4ecd1;
+  color: #74600f;
+}
+
+.tag.low {
+  background: #e7edf2;
+  color: #425363;
+}
+
 .muted {
   color: var(--muted);
 }
@@ -318,6 +334,16 @@ tbody tr.active {
 
 .muted-card {
   background: #fbfcfb;
+}
+
+.warning-card {
+  border-color: #e7b79d;
+  background: #fff8f4;
+}
+
+.backfill-card {
+  border-color: #d7c477;
+  background: #fffdf3;
 }
 
 .relationship-card + .relationship-card,

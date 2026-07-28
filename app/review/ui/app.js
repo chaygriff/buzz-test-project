@@ -1,10 +1,5 @@
 const DATASETS = {
-  people: "data/people.jsonl",
-  relationships: "data/relationships.jsonl",
-  organizations: "data/organizations.jsonl",
-  evidence: "data/evidence_sources.jsonl",
-  decisions: "data/resolution_decisions.jsonl",
-  profileEnrichments: "data/profile_enrichments.jsonl",
+  reviewBundle: "data/review_bundle.json",
 };
 
 const state = {
@@ -14,6 +9,9 @@ const state = {
   evidence: [],
   decisions: [],
   profileEnrichments: [],
+  profileReconciliationDecisions: [],
+  backfillCandidates: [],
+  metadata: null,
   filters: {
     search: "",
     status: "",
@@ -30,6 +28,7 @@ const el = {
   organizationCount: document.querySelector("#organizationCount"),
   decisionCount: document.querySelector("#decisionCount"),
   enrichmentCount: document.querySelector("#enrichmentCount"),
+  backfillCount: document.querySelector("#backfillCount"),
   resultCount: document.querySelector("#resultCount"),
   rows: document.querySelector("#relationshipRows"),
   search: document.querySelector("#searchInput"),
@@ -48,32 +47,32 @@ const index = {
   organizations: new Map(),
   evidenceByRelationship: new Map(),
   enrichmentByPerson: new Map(),
+  reconciliationByPerson: new Map(),
+  backfillByPerson: new Map(),
 };
 
-async function loadJsonl(path) {
+async function loadJson(path) {
   const response = await fetch(path);
   if (!response.ok) {
     throw new Error(`Failed to load ${path}: ${response.status}`);
   }
-  const text = await response.text();
-  return text
-    .split("\n")
-    .map((line) => line.trim())
-    .filter(Boolean)
-    .map((line) => JSON.parse(line));
+  return response.json();
 }
 
 async function init() {
   try {
-    const [people, relationships, organizations, evidence, decisions, profileEnrichments] = await Promise.all([
-      loadJsonl(DATASETS.people),
-      loadJsonl(DATASETS.relationships),
-      loadJsonl(DATASETS.organizations),
-      loadJsonl(DATASETS.evidence),
-      loadJsonl(DATASETS.decisions),
-      loadJsonl(DATASETS.profileEnrichments),
-    ]);
-    Object.assign(state, { people, relationships, organizations, evidence, decisions, profileEnrichments });
+    const bundle = await loadJson(DATASETS.reviewBundle);
+    Object.assign(state, {
+      people: bundle.people || [],
+      relationships: bundle.relationships || [],
+      organizations: bundle.organizations || [],
+      evidence: bundle.evidence_sources || [],
+      decisions: bundle.resolution_decisions || [],
+      profileEnrichments: bundle.profile_enrichments || [],
+      profileReconciliationDecisions: bundle.profile_reconciliation_decisions || [],
+      backfillCandidates: bundle.backfill_candidates || [],
+      metadata: bundle.metadata || null,
+    });
     buildIndexes();
     populateFilters();
     bindEvents();
@@ -96,6 +95,16 @@ function buildIndexes() {
   for (const enrichment of state.profileEnrichments) {
     if (!enrichment.person_id || index.enrichmentByPerson.has(enrichment.person_id)) continue;
     index.enrichmentByPerson.set(enrichment.person_id, enrichment);
+  }
+  index.reconciliationByPerson = new Map();
+  for (const decision of state.profileReconciliationDecisions) {
+    if (!decision.person_id) continue;
+    index.reconciliationByPerson.set(decision.person_id, decision);
+  }
+  index.backfillByPerson = new Map();
+  for (const candidate of state.backfillCandidates) {
+    if (!candidate.person_id) continue;
+    index.backfillByPerson.set(candidate.person_id, candidate);
   }
 }
 
@@ -147,6 +156,7 @@ function render() {
   el.organizationCount.textContent = state.organizations.length.toLocaleString();
   el.decisionCount.textContent = state.decisions.length.toLocaleString();
   el.enrichmentCount.textContent = state.profileEnrichments.length.toLocaleString();
+  el.backfillCount.textContent = state.backfillCandidates.length.toLocaleString();
   renderRelationships();
   renderDecisions();
 }
@@ -165,6 +175,9 @@ function filteredRelationships() {
     if (state.filters.status && record.status !== state.filters.status) return false;
     if (state.filters.type && record.relationship_type !== state.filters.type) return false;
     if (state.filters.review === "has_enrichment" && !index.enrichmentByPerson.has(record.person_id)) return false;
+    if (state.filters.review === "missing_enrichment" && index.enrichmentByPerson.has(record.person_id)) return false;
+    if (state.filters.review === "needs_backfill" && !index.backfillByPerson.has(record.person_id)) return false;
+    if (state.filters.review === "reconciliation" && !index.reconciliationByPerson.has(record.person_id)) return false;
     if (state.filters.review === "missing_profile" && getPerson(record.person_id).profile_urls.length > 0) return false;
     if (state.filters.review === "co_advisor" && !record.co_advisor_name_raw) return false;
     if (state.filters.review === "destination" && !record.current_destination_raw) return false;
@@ -200,10 +213,12 @@ function renderRelationshipRow(record) {
   const person = getPerson(record.person_id);
   const evidence = index.evidenceByRelationship.get(record.relationship_id);
   const destination = record.current_destination_raw || getOrganization(record.current_destination_org_id).name;
+  const reconciliation = index.reconciliationByPerson.get(record.person_id);
+  const backfill = index.backfillByPerson.get(record.person_id);
   const active = state.selectedPersonId === record.person_id ? " class=\"active\"" : "";
   return `
     <tr data-person-id="${escapeAttr(record.person_id)}"${active}>
-      <td class="person-cell">${escapeHtml(person.display_name)}<br><span class="muted">${escapeHtml(person.resolution_status)}</span></td>
+      <td class="person-cell">${escapeHtml(person.display_name)}<br><span class="muted">${escapeHtml(person.resolution_status)}</span>${reconciliation ? `<br>${tag("Review join", "needs_review")}` : ""}${backfill ? `<br>${tag("Backfill queued", backfill.priority_bucket)}` : ""}</td>
       <td>${tag(titleize(record.relationship_type))}</td>
       <td>${tag(titleize(record.status), record.status)}</td>
       <td>${escapeHtml(formatYears(record))}</td>
@@ -224,8 +239,10 @@ function renderPersonDetail(personId) {
   const person = getPerson(personId);
   const records = state.relationships.filter((record) => record.person_id === personId);
   const enrichment = index.enrichmentByPerson.get(personId);
+  const reconciliation = index.reconciliationByPerson.get(personId);
+  const backfillCandidate = index.backfillByPerson.get(personId);
   el.detailName.textContent = person.display_name;
-  el.detailMeta.textContent = `${records.length} relationship${records.length === 1 ? "" : "s"} · ${person.resolution_status}${enrichment ? " · profile enriched" : ""}`;
+  el.detailMeta.textContent = `${records.length} relationship${records.length === 1 ? "" : "s"} · ${person.resolution_status}${enrichment ? " · profile enriched" : ""}${backfillCandidate ? " · backfill queued" : ""}`;
   el.personDetail.className = "detail-body";
   el.personDetail.innerHTML = `
     <dl class="detail-grid">
@@ -234,8 +251,21 @@ function renderPersonDetail(personId) {
       <dt>Profiles</dt><dd>${formatProfileLinks(person.profile_urls)}</dd>
       <dt>Role</dt><dd>${escapeHtml(valueOrNA(person.primary_role))}</dd>
     </dl>
+    ${renderReconciliationCard(reconciliation)}
     ${renderEnrichmentCard(enrichment)}
+    ${renderBackfillCard(backfillCandidate)}
     ${records.map(renderRelationshipCard).join("")}
+  `;
+}
+
+function renderReconciliationCard(decision) {
+  if (!decision) return "";
+  return `
+    <article class="profile-card warning-card">
+      <h3>Profile reconciliation ${tag(titleize(decision.review_status), decision.review_status)}</h3>
+      <p>${escapeHtml(decision.evidence_summary)}</p>
+      <p><strong>Rule:</strong> ${escapeHtml(decision.rule_name)}</p>
+    </article>
   `;
 }
 
@@ -260,6 +290,19 @@ function renderEnrichmentCard(enrichment) {
       </div>
       <p><strong>Evidence:</strong> ${escapeHtml(valueOrNA(enrichment.evidence_text))}</p>
       <p><strong>Source:</strong> ${formatNamedLink(valueOrNA(enrichment.source_url), enrichment.source_url)}</p>
+    </article>
+  `;
+}
+
+function renderBackfillCard(candidate) {
+  if (!candidate) return "";
+  return `
+    <article class="profile-card backfill-card">
+      <h3>People-search backfill ${tag(titleize(candidate.priority_bucket), candidate.priority_bucket)}</h3>
+      <p><strong>Status:</strong> ${escapeHtml(titleize(candidate.verification_status))}</p>
+      <p><strong>Search query:</strong> ${escapeHtml(candidate.search_query)}</p>
+      <p><strong>Reasons:</strong> ${escapeHtml(candidate.priority_reasons.join(", "))}</p>
+      <p><strong>Evidence:</strong> ${escapeHtml(valueOrNA(candidate.evidence_text))}</p>
     </article>
   `;
 }
