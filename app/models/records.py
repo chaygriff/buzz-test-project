@@ -1,6 +1,12 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+
+
+@dataclass(frozen=True)
+class EvidenceLink:
+    text: str
+    url: str
 
 
 @dataclass(frozen=True)
@@ -14,7 +20,11 @@ class RelationshipRecord:
     normalized_relationship: str | None
     status: str | None
     degree: str | None
+    start_year: int | None
+    end_year: int | None
     graduation_year: int | None
+    co_advisor: str | None
+    fellowship: str | None
     current_destination: str | None
     source_url: str
     page_section: str | None
@@ -22,4 +32,4 @@ class RelationshipRecord:
     confidence: float | None
     verification_status: str
     retrieved_at: str | None
-
+    source_links: list[EvidenceLink] = field(default_factory=list)
