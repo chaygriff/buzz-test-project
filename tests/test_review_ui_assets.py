@@ -38,7 +38,7 @@ class ReviewUiAssetTests(unittest.TestCase):
         self.assertEqual(len(people), 87)
         self.assertEqual(len(relationships), 88)
         self.assertEqual(len(decisions), 2)
-        self.assertEqual(len(enrichments), 42)
+        self.assertEqual(len(enrichments), 51)
 
 
 def read_jsonl(path: Path) -> list[dict]:
