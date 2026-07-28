@@ -1,0 +1,9 @@
+[project]
+name = "talent-network-collector"
+version = "0.1.0"
+description = "Phase 1 deterministic crawler and parser for talent network relationship evidence."
+requires-python = ">=3.11"
+
+[tool.setuptools]
+packages = ["app", "app.crawler", "app.extraction", "app.exports", "app.models", "app.review"]
+
