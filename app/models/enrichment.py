@@ -17,6 +17,32 @@ class EnrichmentCandidateRecord:
 
 
 @dataclass(frozen=True)
+class BackfillCandidateRecord:
+    backfill_candidate_id: str
+    person_id: str
+    person_name: str
+    relationship_id: str
+    relationship_type: str | None
+    status: str | None
+    degree: str | None
+    start_year: int | None
+    end_year: int | None
+    graduation_year: int | None
+    source_affiliation: str | None
+    current_destination: str | None
+    evidence_text: str
+    source_url: str
+    source_section: str | None
+    priority_bucket: str
+    priority_score: int
+    priority_reasons: list[str]
+    search_query: str
+    search_terms: list[str]
+    research_guidance: list[str]
+    verification_status: str
+
+
+@dataclass(frozen=True)
 class ProfileEnrichmentRecord:
     enrichment_id: str
     candidate_id: str

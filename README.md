@@ -31,6 +31,10 @@ python3 -m app.crawler.cli normalize-sections \
 python3 -m app.crawler.cli build-enrichment-queue \
   --relationships data/relationships.jsonl \
   --out data/enrichment_candidates.jsonl
+python3 -m app.crawler.cli build-backfill-queue \
+  --relationships data/relationships.jsonl \
+  --profile-enrichments data/profile_enrichment.jsonl \
+  --out data/backfill_candidates.jsonl
 python3 -m app.crawler.cli enrich-profiles \
   --candidates data/enrichment_candidates.jsonl \
   --out data/profile_enrichment.jsonl \
@@ -45,6 +49,9 @@ external identifiers by default. It only fetches supported HTML profile pages
 when robots.txt allows a depth-0 request.
 Manual people-research batches can be imported into the same enrichment JSONL
 record shape.
+No-explicit-link backfill candidates are emitted as separate people-research
+queue records with priority, seed evidence, context-rich search terms, and
+per-record guidance for conservative verification.
 
 ## Development
 

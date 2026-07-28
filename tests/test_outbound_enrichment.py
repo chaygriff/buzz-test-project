@@ -6,6 +6,7 @@ from unittest.mock import patch
 from app.enrichment.outbound import (
     EnrichmentConfig,
     OutboundFetchResult,
+    build_backfill_candidates,
     build_enrichment_candidates,
     classify_url,
     enrich_candidates,
@@ -43,6 +44,33 @@ def relationship(
         verification_status="parsed",
         retrieved_at=None,
         source_links=links or [],
+    )
+
+
+def postdoc_without_link(person_name: str = "Michael Broxton") -> RelationshipRecord:
+    return RelationshipRecord(
+        faculty_name="Gordon Wetzstein",
+        faculty_institution="Stanford University",
+        faculty_homepage="https://web.stanford.edu/~gordonwz/",
+        person_name=person_name,
+        person_profile_url=None,
+        raw_relationship="Postdocs",
+        normalized_relationship="postdoc",
+        status="alumni",
+        degree=None,
+        start_year=2017,
+        end_year=2018,
+        graduation_year=None,
+        co_advisor=None,
+        fellowship=None,
+        current_destination="Research Scientist at Google",
+        source_url="https://web.stanford.edu/~gordonwz/",
+        page_section="Students supervised > Postdocs",
+        evidence_text=f"{person_name}, Stanford University, Postdoc 2017-2018, now Research Scientist at Google",
+        confidence=0.75,
+        verification_status="parsed",
+        retrieved_at=None,
+        source_links=[],
     )
 
 
@@ -87,6 +115,38 @@ class OutboundEnrichmentTests(unittest.TestCase):
         self.assertEqual(records[0].fetch_status, "identifier_only")
         self.assertEqual(records[0].skip_reason, "stored_as_external_identifier")
         self.assertEqual(records[0].linkedin_url, "https://www.linkedin.com/in/boyang-deng/")
+
+    def test_builds_prioritized_backfill_candidates_for_people_without_links(self):
+        candidates = build_backfill_candidates(
+            [
+                postdoc_without_link(),
+                relationship(
+                    person_name="Boyang Deng",
+                    links=[EvidenceLink(text="Boyang Deng", url="https://boyangdeng.com/")],
+                ),
+            ],
+        )
+
+        self.assertEqual(len(candidates), 1)
+        self.assertEqual(candidates[0].person_name, "Michael Broxton")
+        self.assertEqual(candidates[0].relationship_type, "postdoc")
+        self.assertEqual(candidates[0].priority_bucket, "high")
+        self.assertIn("has_seed_current_destination", candidates[0].priority_reasons)
+        self.assertIn("Michael Broxton", candidates[0].search_query)
+        self.assertIn("Gordon Wetzstein", candidates[0].search_query)
+        self.assertIn("Research Scientist at Google", candidates[0].search_query)
+        self.assertIn("Run people-research", candidates[0].research_guidance[0])
+        self.assertEqual(candidates[0].verification_status, "needs_people_research")
+
+    def test_backfill_candidates_exclude_already_enriched_people(self):
+        person_id = build_backfill_candidates([postdoc_without_link()])[0].person_id
+
+        candidates = build_backfill_candidates(
+            [postdoc_without_link()],
+            existing_enriched_person_ids={person_id},
+        )
+
+        self.assertEqual(candidates, [])
 
     @patch("app.enrichment.outbound.fetch_candidate")
     @patch("app.enrichment.outbound.RobotsPolicy")

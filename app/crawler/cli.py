@@ -7,10 +7,12 @@ from app.crawler.crawler import CrawlConfig, TalentCrawler
 from app.crawler.seeds import load_faculty_seeds
 from app.enrichment.outbound import (
     EnrichmentConfig,
+    build_backfill_candidates,
     build_enrichment_candidates,
     enrich_candidates,
     import_manual_profile_research,
     load_enrichment_candidates,
+    load_profile_enrichments,
 )
 from app.extraction.relationship_normalizer import load_section_blocks, normalize_relationships
 from app.extraction.section_parser import parse_cached_pages
@@ -48,6 +50,17 @@ def build_parser() -> argparse.ArgumentParser:
     queue.add_argument("--relationships", required=True, type=Path)
     queue.add_argument("--out", required=True, type=Path)
     queue.add_argument("--max-candidates-per-person", default=3, type=int)
+
+    backfill_queue = subcommands.add_parser("build-backfill-queue", help="Build no-explicit-link people-research backfill candidates")
+    backfill_queue.add_argument("--relationships", required=True, type=Path)
+    backfill_queue.add_argument("--out", required=True, type=Path)
+    backfill_queue.add_argument(
+        "--profile-enrichments",
+        action="append",
+        default=[],
+        type=Path,
+        help="Existing profile enrichment JSONL file; may be supplied more than once.",
+    )
 
     enrich = subcommands.add_parser("enrich-profiles", help="Fetch allowed outbound profile pages and emit enrichment records")
     enrich.add_argument("--candidates", required=True, type=Path)
@@ -108,6 +121,17 @@ def main() -> None:
             records,
             max_candidates_per_person=args.max_candidates_per_person,
         )
+        write_jsonl(args.out, candidates)
+        return
+
+    if args.command == "build-backfill-queue":
+        records = load_relationship_records(args.relationships)
+        enriched_person_ids = {
+            enrichment.person_id
+            for path in args.profile_enrichments
+            for enrichment in load_profile_enrichments(path)
+        }
+        candidates = build_backfill_candidates(records, existing_enriched_person_ids=enriched_person_ids)
         write_jsonl(args.out, candidates)
         return
 

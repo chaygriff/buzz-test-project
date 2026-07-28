@@ -13,7 +13,7 @@ from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
 from app.crawler.robots import RobotsPolicy
-from app.models.enrichment import EnrichmentCandidateRecord, ProfileEnrichmentRecord
+from app.models.enrichment import BackfillCandidateRecord, EnrichmentCandidateRecord, ProfileEnrichmentRecord
 from app.models.records import EvidenceLink, RelationshipRecord
 from app.resolution.entity_resolver import deterministic_id, load_relationship_records, resolve_relationship_entities
 
@@ -86,7 +86,10 @@ def build_enrichment_candidates(
     max_candidates_per_person: int = 3,
 ) -> list[EnrichmentCandidateRecord]:
     resolved = resolve_relationship_entities(records)
-    canonical_by_evidence = {evidence.evidence_text: relationship for evidence, relationship in zip(records, resolved.relationships)}
+    canonical_by_evidence = {
+        evidence.evidence_text: relationship
+        for evidence, relationship in zip(resolved.evidence_sources, resolved.relationships)
+    }
     seen_by_person: dict[str, set[str]] = {}
     candidates: list[EnrichmentCandidateRecord] = []
 
@@ -115,6 +118,162 @@ def build_enrichment_candidates(
                 )
             )
     return candidates
+
+
+def build_backfill_candidates(
+    records: list[RelationshipRecord],
+    *,
+    existing_enriched_person_ids: set[str] | None = None,
+) -> list[BackfillCandidateRecord]:
+    enriched_person_ids = existing_enriched_person_ids or set()
+    resolved = resolve_relationship_entities(records)
+    canonical_by_evidence = {evidence.evidence_text: relationship for evidence, relationship in zip(records, resolved.relationships)}
+    best_by_person: dict[str, BackfillCandidateRecord] = {}
+
+    for record in records:
+        if not record.person_name:
+            continue
+        relationship = canonical_by_evidence.get(record.evidence_text)
+        if relationship is None or relationship.person_id in enriched_person_ids:
+            continue
+        if candidate_links_for_record(record):
+            continue
+
+        candidate = backfill_candidate_for_record(record, relationship.person_id, relationship.relationship_id)
+        previous = best_by_person.get(candidate.person_id)
+        if previous is None or candidate.priority_score > previous.priority_score:
+            best_by_person[candidate.person_id] = candidate
+
+    return sorted(
+        best_by_person.values(),
+        key=lambda candidate: (-candidate.priority_score, candidate.person_name.lower()),
+    )
+
+
+def backfill_candidate_for_record(
+    record: RelationshipRecord,
+    person_id: str,
+    relationship_id: str,
+) -> BackfillCandidateRecord:
+    score, reasons = score_backfill_candidate(record)
+    search_terms = backfill_search_terms(record)
+    return BackfillCandidateRecord(
+        backfill_candidate_id=deterministic_id("backfill_candidate", person_id, relationship_id, record.evidence_text),
+        person_id=person_id,
+        person_name=record.person_name or "",
+        relationship_id=relationship_id,
+        relationship_type=record.normalized_relationship,
+        status=record.status,
+        degree=record.degree,
+        start_year=record.start_year,
+        end_year=record.end_year,
+        graduation_year=record.graduation_year,
+        source_affiliation=record.faculty_institution,
+        current_destination=record.current_destination,
+        evidence_text=record.evidence_text,
+        source_url=record.source_url,
+        source_section=record.page_section,
+        priority_bucket=priority_bucket(score),
+        priority_score=score,
+        priority_reasons=reasons,
+        search_query=" ".join(search_terms),
+        search_terms=search_terms,
+        research_guidance=backfill_research_guidance(record),
+        verification_status="needs_people_research",
+    )
+
+
+def score_backfill_candidate(record: RelationshipRecord) -> tuple[int, list[str]]:
+    score = 0
+    reasons: list[str] = []
+    relationship = record.normalized_relationship or ""
+    status = record.status or ""
+
+    if status == "current":
+        score += 30
+        reasons.append("current_relationship")
+    if relationship in {"phd_student", "postdoc"}:
+        score += 25
+        reasons.append(f"high_value_{relationship}")
+    elif relationship in {"masters_student", "bachelors_student"}:
+        score += 12
+        reasons.append(f"degree_{relationship}")
+    elif relationship == "visitor":
+        score += 4
+        reasons.append("visitor_requires_strong_attribution")
+    elif relationship == "high_school_student":
+        score -= 15
+        reasons.append("lower_priority_high_school")
+
+    if record.current_destination:
+        score += 20
+        reasons.append("has_seed_current_destination")
+    if record.fellowship:
+        score += 5
+        reasons.append("has_seed_fellowship")
+    if record.co_advisor:
+        score += 5
+        reasons.append("has_seed_coadvisor")
+    if record.start_year or record.end_year or record.graduation_year:
+        score += 5
+        reasons.append("has_seed_year_context")
+
+    if not reasons:
+        reasons.append("missing_explicit_profile_link")
+    return score, reasons
+
+
+def priority_bucket(score: int) -> str:
+    if score >= 50:
+        return "high"
+    if score >= 25:
+        return "medium"
+    return "low"
+
+
+def backfill_search_terms(record: RelationshipRecord) -> list[str]:
+    terms = [
+        record.person_name or "",
+        record.faculty_name or "",
+        record.faculty_institution or "",
+        "Computational Imaging Lab",
+    ]
+    if record.normalized_relationship:
+        terms.append(record.normalized_relationship.replace("_", " "))
+    if record.start_year or record.end_year:
+        years = "-".join(str(year) for year in [record.start_year, record.end_year] if year)
+        if years:
+            terms.append(years)
+    if record.graduation_year:
+        terms.append(str(record.graduation_year))
+    if record.current_destination:
+        terms.append(record.current_destination)
+    if record.fellowship:
+        terms.append(record.fellowship)
+    if record.co_advisor:
+        terms.append(record.co_advisor)
+    return [term for term in dedupe_preserving_order(normalize_text(term) for term in terms) if term]
+
+
+def backfill_research_guidance(record: RelationshipRecord) -> list[str]:
+    guidance = [
+        "Run people-research with the full context-rich search query, not name-only search.",
+        "Require public evidence tying the person to Stanford, Gordon Wetzstein, or the Computational Imaging Lab before marking verified.",
+        "Leave URLs null or mark needs_review when attribution is weak.",
+    ]
+    if record.normalized_relationship == "visitor":
+        guidance.append("For visitors, also require evidence tying the profile to the seed source affiliation or destination.")
+    return guidance
+
+
+def dedupe_preserving_order(values: list[str] | object) -> list[str]:
+    seen: set[str] = set()
+    deduped: list[str] = []
+    for value in values:
+        if value and value not in seen:
+            seen.add(value)
+            deduped.append(value)
+    return deduped
 
 
 def candidate_links_for_record(record: RelationshipRecord) -> list[EvidenceLink]:
@@ -359,6 +518,15 @@ def load_enrichment_candidates(path: Path) -> list[EnrichmentCandidateRecord]:
             if line.strip():
                 candidates.append(EnrichmentCandidateRecord(**json.loads(line)))
     return candidates
+
+
+def load_profile_enrichments(path: Path) -> list[ProfileEnrichmentRecord]:
+    records: list[ProfileEnrichmentRecord] = []
+    with path.open(encoding="utf-8") as handle:
+        for line in handle:
+            if line.strip():
+                records.append(ProfileEnrichmentRecord(**json.loads(line)))
+    return records
 
 
 def import_manual_profile_research(path: Path) -> list[ProfileEnrichmentRecord]:
