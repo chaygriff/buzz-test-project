@@ -13,6 +13,7 @@ LAB_CONTEXT = "Computational Imaging Lab"
 
 
 def build_review_bundle(data_dir: Path) -> dict[str, Any]:
+    metadata = read_metadata(data_dir)
     people = read_jsonl(data_dir / "people.jsonl")
     relationships = read_jsonl(data_dir / "relationships.jsonl")
     organizations = read_jsonl(data_dir / "organizations.jsonl")
@@ -20,16 +21,21 @@ def build_review_bundle(data_dir: Path) -> dict[str, Any]:
     decisions = read_jsonl(data_dir / "resolution_decisions.jsonl")
     profile_enrichments = read_jsonl(data_dir / "profile_enrichments.jsonl")
     reconciliation_decisions = build_profile_reconciliation_decisions(people, profile_enrichments)
-    backfill_candidates = build_backfill_candidates(people, relationships, evidence, profile_enrichments)
+    backfill_path = data_dir / "backfill_candidates.jsonl"
+    if backfill_path.exists():
+        backfill_candidates = read_jsonl(backfill_path)
+    else:
+        backfill_candidates = build_backfill_candidates(metadata, people, relationships, evidence, profile_enrichments)
 
     return {
         "metadata": {
-            "dataset_label": DATASET_LABEL,
+            **metadata,
             "bundle_version": 1,
             "counts": {
                 "people": len(people),
                 "relationships": len(relationships),
                 "organizations": len(organizations),
+                "evidence_sources": len(evidence),
                 "resolution_decisions": len(decisions),
                 "profile_enrichments": len(profile_enrichments),
                 "profile_reconciliation_decisions": len(reconciliation_decisions),
@@ -87,6 +93,7 @@ def profile_reconciliation_decision(
 
 
 def build_backfill_candidates(
+    metadata: dict[str, Any],
     people: list[dict[str, Any]],
     relationships: list[dict[str, Any]],
     evidence: list[dict[str, Any]],
@@ -104,7 +111,7 @@ def build_backfill_candidates(
         if person.get("profile_urls"):
             continue
         source = evidence_by_relationship.get(relationship["relationship_id"], {})
-        candidate = backfill_candidate_for_relationship(person, relationship, source)
+        candidate = backfill_candidate_for_relationship(metadata, person, relationship, source)
         previous = best_by_person.get(candidate["person_id"])
         if previous is None or candidate["priority_score"] > previous["priority_score"]:
             best_by_person[candidate["person_id"]] = candidate
@@ -113,12 +120,13 @@ def build_backfill_candidates(
 
 
 def backfill_candidate_for_relationship(
+    metadata: dict[str, Any],
     person: dict[str, Any],
     relationship: dict[str, Any],
     evidence: dict[str, Any],
 ) -> dict[str, Any]:
     score, reasons = score_backfill_candidate(relationship)
-    terms = search_terms(person, relationship)
+    terms = search_terms(metadata, person, relationship)
     return {
         "backfill_candidate_id": stable_id("backfill_candidate", person["person_id"], relationship["relationship_id"], evidence.get("evidence_text")),
         "person_id": person["person_id"],
@@ -186,12 +194,14 @@ def priority_bucket(score: int) -> str:
     return "low"
 
 
-def search_terms(person: dict[str, Any], relationship: dict[str, Any]) -> list[str]:
+def search_terms(metadata: dict[str, Any], person: dict[str, Any], relationship: dict[str, Any]) -> list[str]:
+    faculty_context = metadata.get("professor_name") or FACULTY_CONTEXT
+    lab_context = metadata.get("lab_context") or LAB_CONTEXT
     terms = [
         person.get("display_name"),
-        FACULTY_CONTEXT,
+        faculty_context,
         relationship.get("source_affiliation_raw"),
-        LAB_CONTEXT,
+        lab_context,
         (relationship.get("relationship_type") or "").replace("_", " "),
         year_range(relationship),
         str(relationship.get("graduation_year") or ""),
@@ -209,6 +219,14 @@ def year_range(relationship: dict[str, Any]) -> str:
 
 def read_jsonl(path: Path) -> list[dict[str, Any]]:
     return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
+def read_metadata(data_dir: Path) -> dict[str, Any]:
+    path = data_dir / "metadata.json"
+    if not path.exists():
+        return {"dataset_label": DATASET_LABEL}
+    metadata = json.loads(path.read_text(encoding="utf-8"))
+    return {"dataset_label": metadata.get("dataset_label") or DATASET_LABEL, **metadata}
 
 
 def write_review_bundle(data_dir: Path, out_path: Path) -> None:
