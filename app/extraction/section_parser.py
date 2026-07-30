@@ -12,6 +12,10 @@ from app.models.records import EvidenceLink
 
 HEADING_TAGS = {"h1", "h2", "h3", "h4", "h5", "h6"}
 BLOCK_TAGS = {"p", "li", "td", "th", "div"}
+PANEL_HEADINGS = {
+    "alumniDiv": "Alumni",
+    "joinUsDiv": "Prospective Students",
+}
 RELEVANT_FALLBACK_TERMS = {
     "alumni",
     "bio",
@@ -54,6 +58,11 @@ class SectionHTMLParser(HTMLParser):
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attrs_by_name = dict(attrs)
+        if tag == "div" and attrs_by_name.get("id") in PANEL_HEADINGS:
+            self._set_heading(1, PANEL_HEADINGS[attrs_by_name["id"]])
+            return
+        if tag == "li" and self._capture_tag == "li":
+            self._flush_capture()
         if tag == "a" and self._capture_tag and attrs_by_name.get("href"):
             self._active_link_href = attrs_by_name["href"]
             self._active_link_parts = []
@@ -85,6 +94,14 @@ class SectionHTMLParser(HTMLParser):
         if tag != self._capture_tag:
             return
 
+        self._flush_capture()
+
+    def _set_heading(self, level: int, text: str) -> None:
+        self.heading_stack = [(old_level, old_text) for old_level, old_text in self.heading_stack if old_level < level]
+        self.heading_stack.append((level, text))
+
+    def _flush_capture(self) -> None:
+        tag = self._capture_tag
         text = normalize_text(" ".join(self._parts))
         if text and tag in HEADING_TAGS and self._capture_heading_level is not None:
             self._set_heading(self._capture_heading_level, text)
@@ -95,10 +112,6 @@ class SectionHTMLParser(HTMLParser):
         self._capture_heading_level = None
         self._parts = []
         self._links = []
-
-    def _set_heading(self, level: int, text: str) -> None:
-        self.heading_stack = [(old_level, old_text) for old_level, old_text in self.heading_stack if old_level < level]
-        self.heading_stack.append((level, text))
 
 
 class FallbackHTMLParser(HTMLParser):

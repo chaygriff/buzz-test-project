@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Talent Network Data Review</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Phase 1 review UI</p>
+        <h1>Talent Network Data Review</h1>
+      </div>
+      <div class="dataset-meta">
+        <span id="datasetLabel">Wetzstein seed</span>
+        <span id="lastLoaded">Loading...</span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="filters" aria-label="Relationship filters">
+        <div class="filter-group">
+          <label for="searchInput">Search</label>
+          <input id="searchInput" type="search" placeholder="Name, org, evidence">
+        </div>
+        <div class="filter-group">
+          <label for="statusFilter">Status</label>
+          <select id="statusFilter">
+            <option value="">All statuses</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="professorFilter">Professor</label>
+          <select id="professorFilter">
+            <option value="">All professors</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="typeFilter">Relationship</label>
+          <select id="typeFilter">
+            <option value="">All types</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="reviewFilter">Review focus</label>
+          <select id="reviewFilter">
+            <option value="">All records</option>
+            <option value="has_enrichment">Has manual enrichment</option>
+            <option value="missing_enrichment">Missing manual enrichment</option>
+            <option value="has_profile_url">Has profile URL</option>
+            <option value="needs_backfill">No-link backfill queued</option>
+            <option value="reconciliation">Needs profile reconciliation</option>
+            <option value="missing_profile">Missing profile URL</option>
+            <option value="co_advisor">Has co-advisor raw name</option>
+            <option value="destination">Has current destination</option>
+          </select>
+        </div>
+      </aside>
+
+      <section class="content">
+        <section class="metrics" aria-label="Dataset metrics">
+          <article>
+            <span id="peopleCount">0</span>
+            <p>People</p>
+          </article>
+          <article>
+            <span id="relationshipCount">0</span>
+            <p>Relationships</p>
+          </article>
+          <article>
+            <span id="organizationCount">0</span>
+            <p>Organizations</p>
+          </article>
+          <article>
+            <span id="decisionCount">0</span>
+            <p>Merge decisions</p>
+          </article>
+          <article>
+            <span id="enrichmentCount">0</span>
+            <p>Manual enrichments</p>
+          </article>
+          <article>
+            <span id="profileUrlCount">0</span>
+            <p>Profile URLs found</p>
+          </article>
+          <article>
+            <span id="backfillCount">0</span>
+            <p>Backfill queued</p>
+          </article>
+        </section>
+
+        <section class="split">
+          <section class="table-panel">
+            <div class="panel-head">
+              <div>
+                <h2>Relationships</h2>
+                <p id="resultCount">0 records</p>
+              </div>
+              <button id="clearFilters" type="button">Clear</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Person</th>
+                    <th>Professor</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Years</th>
+                    <th>Source affiliation</th>
+                    <th>Destination</th>
+                  </tr>
+                </thead>
+                <tbody id="relationshipRows"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <aside class="detail-panel" aria-label="Selected person detail">
+            <div class="panel-head">
+              <div>
+                <h2 id="detailName">Select a person</h2>
+                <p id="detailMeta">Relationship details will appear here.</p>
+              </div>
+            </div>
+            <div id="personDetail" class="detail-empty">
+              Choose any relationship row to inspect the person, linked records, and source evidence.
+            </div>
+          </aside>
+        </section>
+
+        <section class="decision-panel">
+          <div class="panel-head">
+            <div>
+              <h2>Resolution Decisions</h2>
+              <p>Auto-merge decisions emitted by the deterministic resolver.</p>
+            </div>
+          </div>
+          <div id="decisionList" class="decision-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

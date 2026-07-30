@@ -1,0 +1,69 @@
+{
+  "dataset_label": "Stanford faculty pilots: Gordon Wetzstein + Jiajun Wu + Maneesh Agrawala",
+  "professors": [
+    {
+      "key": "gordon_wetzstein",
+      "label": "Gordon Wetzstein pilot",
+      "professor_name": "Gordon Wetzstein"
+    },
+    {
+      "key": "jiajun_wu",
+      "label": "Jiajun Wu pilot",
+      "professor_name": "Jiajun Wu"
+    },
+    {
+      "key": "maneesh_agrawala",
+      "label": "Maneesh Agrawala pilot",
+      "professor_name": "Maneesh Agrawala"
+    }
+  ],
+  "source_datasets": [
+    {
+      "key": "gordon_wetzstein",
+      "label": "Gordon Wetzstein pilot",
+      "professor_name": "Gordon Wetzstein",
+      "source_bundle": "/Users/chan/.buzz/REPOS/buzz-test-project/app/review/ui/source_bundles/gordon_wetzstein_review_bundle.json",
+      "counts": {
+        "people": 87,
+        "relationships": 88,
+        "organizations": 56,
+        "resolution_decisions": 2,
+        "profile_enrichments": 52,
+        "profile_reconciliation_decisions": 4,
+        "backfill_candidates": 34
+      }
+    },
+    {
+      "key": "jiajun_wu",
+      "label": "Jiajun Wu pilot",
+      "professor_name": "Jiajun Wu",
+      "source_bundle": "/Users/chan/.buzz/REPOS/buzz-test-project/app/review/ui/source_bundles/jiajun_wu_review_bundle.json",
+      "counts": {
+        "people": 41,
+        "relationships": 40,
+        "organizations": 1,
+        "evidence_sources": 40,
+        "resolution_decisions": 0,
+        "profile_enrichments": 40,
+        "profile_reconciliation_decisions": 0,
+        "backfill_candidates": 0
+      }
+    },
+    {
+      "key": "maneesh_agrawala",
+      "label": "Maneesh Agrawala pilot",
+      "professor_name": "Maneesh Agrawala",
+      "source_bundle": "/Users/chan/.buzz/REPOS/buzz-test-project/app/review/ui/source_bundles/maneesh_agrawala_review_bundle.json",
+      "counts": {
+        "people": 57,
+        "relationships": 56,
+        "organizations": 1,
+        "evidence_sources": 56,
+        "resolution_decisions": 0,
+        "profile_enrichments": 54,
+        "profile_reconciliation_decisions": 0,
+        "backfill_candidates": 2
+      }
+    }
+  ]
+}
