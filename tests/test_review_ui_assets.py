@@ -46,6 +46,9 @@ class ReviewUiAssetTests(unittest.TestCase):
         self.assertEqual(len(bundle["relationships"]), 184)
         self.assertEqual(len(bundle["profile_enrichments"]), 155)
         self.assertEqual(len(bundle["backfill_candidates"]), 25)
+        self.assertIn("confidence_score", bundle["relationships"][0])
+        self.assertIn("confidence_bucket", bundle["relationships"][0])
+        self.assertIn("confidence_reasons", bundle["relationships"][0])
 
     def test_review_ui_labels_distinguish_enrichment_and_profile_urls(self):
         index_html = (UI_DIR / "index.html").read_text(encoding="utf-8")
@@ -55,9 +58,14 @@ class ReviewUiAssetTests(unittest.TestCase):
         self.assertIn("Profile URLs found", index_html)
         self.assertIn("Professor", index_html)
         self.assertIn("All professors", index_html)
+        self.assertIn("Confidence", index_html)
+        self.assertIn("All confidence levels", index_html)
         self.assertIn("Has profile URL", index_html)
         self.assertIn("professorFilter", app_js)
+        self.assertIn("confidenceFilter", app_js)
         self.assertIn("professorName(record)", app_js)
+        self.assertIn("renderConfidenceBadge(record)", app_js)
+        self.assertIn("renderConfidenceReasons(record)", app_js)
         self.assertIn("renderMetrics(records)", app_js)
         self.assertIn("filteredDecisionCount(personIds)", app_js)
         self.assertIn("filteredProfileEnrichmentCount(personIds)", app_js)
@@ -73,6 +81,21 @@ class ReviewUiAssetTests(unittest.TestCase):
         self.assertIn("PhD Student", app_js)
         self.assertIn("Alumni - Role Unknown", app_js)
         self.assertIn("Single source", app_js)
+
+    def test_confidence_scores_are_bundled_for_review_ui(self):
+        relationships = read_jsonl(DATA_DIR / "relationships.jsonl")
+        bundle = json.loads((DATA_DIR / "review_bundle.json").read_text(encoding="utf-8"))
+        scored_relationships = bundle["relationships"]
+        buckets = {relationship["confidence_bucket"] for relationship in scored_relationships}
+
+        self.assertEqual(len(scored_relationships), len(relationships))
+        self.assertTrue({"high", "medium", "low", "needs_review"}.issubset(buckets))
+        for relationship in scored_relationships:
+            self.assertIsInstance(relationship["confidence_score"], int)
+            self.assertGreaterEqual(relationship["confidence_score"], 0)
+            self.assertLessEqual(relationship["confidence_score"], 100)
+            self.assertIsInstance(relationship["confidence_reasons"], list)
+            self.assertIsInstance(relationship["confidence_penalties"], list)
 
     def test_combined_sample_counts_match_expected_pipeline_shape(self):
         people = read_jsonl(DATA_DIR / "people.jsonl")

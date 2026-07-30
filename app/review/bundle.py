@@ -6,6 +6,8 @@ import re
 from pathlib import Path
 from typing import Any
 
+from app.review.confidence import add_relationship_confidence
+
 
 DATASET_LABEL = "Wetzstein seed"
 FACULTY_CONTEXT = "Gordon Wetzstein"
@@ -26,6 +28,15 @@ def build_review_bundle(data_dir: Path) -> dict[str, Any]:
         backfill_candidates = read_jsonl(backfill_path)
     else:
         backfill_candidates = build_backfill_candidates(metadata, people, relationships, evidence, profile_enrichments)
+    scored_relationships = add_relationship_confidence(
+        people,
+        relationships,
+        evidence,
+        profile_enrichments,
+        decisions,
+        reconciliation_decisions,
+        backfill_candidates,
+    )
 
     return {
         "metadata": {
@@ -43,7 +54,7 @@ def build_review_bundle(data_dir: Path) -> dict[str, Any]:
             },
         },
         "people": people,
-        "relationships": relationships,
+        "relationships": scored_relationships,
         "organizations": organizations,
         "evidence_sources": evidence,
         "resolution_decisions": decisions,

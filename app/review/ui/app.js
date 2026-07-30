@@ -18,6 +18,7 @@ const state = {
     professor: "",
     type: "",
     review: "",
+    confidence: "",
   },
   selectedPersonId: null,
 };
@@ -39,6 +40,7 @@ const el = {
   professor: document.querySelector("#professorFilter"),
   type: document.querySelector("#typeFilter"),
   review: document.querySelector("#reviewFilter"),
+  confidence: document.querySelector("#confidenceFilter"),
   clear: document.querySelector("#clearFilters"),
   detailName: document.querySelector("#detailName"),
   detailMeta: document.querySelector("#detailMeta"),
@@ -84,7 +86,7 @@ async function init() {
     render();
     el.lastLoaded.textContent = `Loaded ${new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
   } catch (error) {
-    el.rows.innerHTML = `<tr><td colspan="7">${escapeHtml(error.message)}</td></tr>`;
+    el.rows.innerHTML = `<tr><td colspan="8">${escapeHtml(error.message)}</td></tr>`;
     el.lastLoaded.textContent = "Load failed";
   }
 }
@@ -159,13 +161,18 @@ function bindEvents() {
     state.filters.review = event.target.value;
     renderRelationships();
   });
+  el.confidence.addEventListener("change", (event) => {
+    state.filters.confidence = event.target.value;
+    renderRelationships();
+  });
   el.clear.addEventListener("click", () => {
-    state.filters = { search: "", status: "", professor: "", type: "", review: "" };
+    state.filters = { search: "", status: "", professor: "", type: "", review: "", confidence: "" };
     el.search.value = "";
     el.status.value = "";
     el.professor.value = "";
     el.type.value = "";
     el.review.value = "";
+    el.confidence.value = "";
     renderRelationships();
   });
 }
@@ -233,6 +240,7 @@ function filteredRelationships() {
     if (state.filters.status && record.status !== state.filters.status) return false;
     if (state.filters.professor && professorName(record) !== state.filters.professor) return false;
     if (state.filters.type && record.relationship_type !== state.filters.type) return false;
+    if (state.filters.confidence && record.confidence_bucket !== state.filters.confidence) return false;
     if (state.filters.review === "has_enrichment" && !index.enrichmentByPerson.has(record.person_id)) return false;
     if (state.filters.review === "missing_enrichment" && index.enrichmentByPerson.has(record.person_id)) return false;
     if (state.filters.review === "has_profile_url" && !getPerson(record.person_id).profile_urls.length) return false;
@@ -257,6 +265,9 @@ function searchableText(record) {
     record.dataset_label,
     record.relationship_type,
     record.status,
+    record.confidence_bucket,
+    ...(record.confidence_reasons || []),
+    ...(record.confidence_penalties || []),
     record.source_affiliation_raw,
     sourceOrg.name,
     record.current_destination_raw,
@@ -285,6 +296,7 @@ function renderRelationshipRow(record) {
       <td>${escapeHtml(professorName(record))}</td>
       <td>${tag(relationshipLabel(record.relationship_type))}</td>
       <td>${tag(titleize(record.status), record.status)}</td>
+      <td>${renderConfidenceBadge(record)}</td>
       <td>${escapeHtml(formatYears(record))}</td>
       <td>${escapeHtml(valueOrNA(record.source_affiliation_raw))}</td>
       <td>${escapeHtml(valueOrNA(destination))}</td>
@@ -398,6 +410,8 @@ function renderRelationshipCard(record) {
     <article class="relationship-card">
       <h3>${escapeHtml(relationshipLabel(record.relationship_type))} ${tag(titleize(record.status), record.status)}</h3>
       <p><strong>Professor:</strong> ${escapeHtml(professorName(record))}</p>
+      <p><strong>Confidence:</strong> ${renderConfidenceBadge(record)}</p>
+      ${renderConfidenceReasons(record)}
       <p><strong>Years:</strong> ${escapeHtml(formatYears(record))}</p>
       <p><strong>Source affiliation:</strong> ${escapeHtml(valueOrNA(record.source_affiliation_raw))}</p>
       <p><strong>Destination:</strong> ${escapeHtml(valueOrNA(record.current_destination_raw))}</p>
@@ -473,6 +487,38 @@ function filteredBackfillCount(personIds) {
 function renderEvidenceSnippet(evidence) {
   if (!evidence?.evidence_text) return "";
   return `<div class="evidence-snippet">${escapeHtml(evidence.evidence_text)}</div>`;
+}
+
+function renderConfidenceBadge(record) {
+  const bucket = record.confidence_bucket || "low";
+  const score = Number.isFinite(record.confidence_score) ? record.confidence_score : 0;
+  return `<span class="confidence-badge ${escapeAttr(bucket)}"><strong>${escapeHtml(String(score))}</strong><span>${escapeHtml(confidenceLabel(bucket))}</span></span>`;
+}
+
+function renderConfidenceReasons(record) {
+  const reasons = record.confidence_reasons || [];
+  const penalties = record.confidence_penalties || [];
+  if (!reasons.length && !penalties.length) return "";
+  return `
+    <div class="confidence-reasons">
+      ${reasons.map((reason) => `<span>${escapeHtml(confidenceReasonLabel(reason))}</span>`).join("")}
+      ${penalties.map((penalty) => `<span class="penalty">${escapeHtml(confidenceReasonLabel(penalty))}</span>`).join("")}
+    </div>
+  `;
+}
+
+function confidenceLabel(bucket) {
+  const labels = {
+    high: "High",
+    medium: "Medium",
+    low: "Low",
+    needs_review: "Review",
+  };
+  return labels[bucket] || titleize(bucket);
+}
+
+function confidenceReasonLabel(value) {
+  return titleize(value).replace(/\bUrl\b/g, "URL");
 }
 
 function professorName(record) {

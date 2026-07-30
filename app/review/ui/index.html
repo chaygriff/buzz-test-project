@@ -56,6 +56,16 @@
             <option value="destination">Has current destination</option>
           </select>
         </div>
+        <div class="filter-group">
+          <label for="confidenceFilter">Confidence</label>
+          <select id="confidenceFilter">
+            <option value="">All confidence levels</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+            <option value="needs_review">Needs review</option>
+          </select>
+        </div>
       </aside>
 
       <section class="content">
@@ -107,6 +117,7 @@
                     <th>Professor</th>
                     <th>Type</th>
                     <th>Status</th>
+                    <th>Confidence</th>
                     <th>Years</th>
                     <th>Source affiliation</th>
                     <th>Destination</th>
