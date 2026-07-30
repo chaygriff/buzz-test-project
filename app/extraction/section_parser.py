@@ -1,11 +1,12 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 from dataclasses import dataclass, field
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 
 from app.models.records import EvidenceLink
 
@@ -220,6 +221,98 @@ class FallbackHTMLParser(HTMLParser):
             self.blocks.append((heading_path, text, links))
 
 
+class PanelListHTMLParser(HTMLParser):
+    def __init__(self, source_url: str):
+        super().__init__()
+        self.source_url = source_url
+        self.blocks: list[tuple[list[str], str, list[EvidenceLink]]] = []
+        self._panel_stack: list[str] = []
+        self._pending_panel_label = False
+        self._panel_label_parts: list[str] = []
+        self._current_panel_label: str | None = None
+        self._list_depth = 0
+        self._li_parts: list[str] | None = None
+        self._li_links: list[EvidenceLink] = []
+        self._active_link_href: str | None = None
+        self._active_link_parts: list[str] | None = None
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attrs_by_name = {name.lower(): value for name, value in attrs}
+        classes = set((attrs_by_name.get("class") or "").split())
+        element_id = attrs_by_name.get("id") or ""
+
+        if tag == "div" and (element_id.endswith("Div") or "hideClass" in classes):
+            self._panel_stack.append(element_id)
+            self._current_panel_label = panel_label_from_id(element_id)
+        elif self._panel_stack and tag == "span" and "panel-label" in classes:
+            self._pending_panel_label = True
+            self._panel_label_parts = []
+        elif self._panel_stack and tag in {"ol", "ul"}:
+            self._list_depth += 1
+        elif self._panel_stack and tag == "li" and self._list_depth:
+            self._flush_list_item()
+            self._li_parts = []
+            self._li_links = []
+        elif tag == "a" and attrs_by_name.get("href") and self._li_parts is not None:
+            self._active_link_href = attrs_by_name["href"]
+            self._active_link_parts = []
+
+    def handle_data(self, data: str) -> None:
+        if self._pending_panel_label:
+            self._panel_label_parts.append(data)
+        if self._li_parts is not None:
+            self._li_parts.append(data)
+        if self._active_link_parts is not None:
+            self._active_link_parts.append(data)
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == "a" and self._active_link_href and self._active_link_parts is not None:
+            link_text = normalize_text(" ".join(self._active_link_parts))
+            if link_text:
+                self._li_links.append(EvidenceLink(text=link_text, url=urljoin(self.source_url, self._active_link_href)))
+            self._active_link_href = None
+            self._active_link_parts = None
+        elif tag == "span" and self._pending_panel_label:
+            label = normalize_text(" ".join(self._panel_label_parts))
+            if label:
+                self._current_panel_label = title_case_panel_label(label)
+            self._pending_panel_label = False
+            self._panel_label_parts = []
+        elif self._panel_stack and tag in {"ol", "ul"}:
+            self._flush_list_item()
+            self._list_depth = max(0, self._list_depth - 1)
+        elif self._panel_stack and tag == "div":
+            self._flush_list_item()
+            self._panel_stack.pop()
+            self._current_panel_label = panel_label_from_id(self._panel_stack[-1]) if self._panel_stack else None
+
+    def close(self) -> None:
+        self._flush_list_item()
+        super().close()
+
+    def _flush_list_item(self) -> None:
+        if self._li_parts is None:
+            return
+        text = normalize_text(" ".join(self._li_parts))
+        label = self._current_panel_label
+        if text and label and is_relevant_fallback_label(label):
+            self.blocks.append(([label], text, list(self._li_links)))
+        self._li_parts = None
+        self._li_links = []
+
+
+def panel_label_from_id(element_id: str) -> str | None:
+    if not element_id:
+        return None
+    label = re.sub(r"Div$", "", element_id)
+    label = re.sub(r"([a-z])([A-Z])", r"\1 \2", label)
+    return title_case_panel_label(label)
+
+
+def title_case_panel_label(label: str) -> str:
+    return normalize_text(label).title()
+
+
 def normalize_text(value: str) -> str:
     normalized = re.sub(r"\s+", " ", value).strip()
     return re.sub(r"\s+([,.;:])", r"\1", normalized)
@@ -240,9 +333,12 @@ def parse_sections(html: str, source_url: str) -> list[SectionBlock]:
     parser.feed(html)
     fallback_parser = FallbackHTMLParser(source_url)
     fallback_parser.feed(html)
+    panel_parser = PanelListHTMLParser(source_url)
+    panel_parser.feed(html)
+    panel_parser.close()
     seen: set[tuple[tuple[str, ...], str]] = set()
     blocks: list[SectionBlock] = []
-    for heading_path, text, links in [*parser.blocks, *fallback_parser.blocks]:
+    for heading_path, text, links in [*parser.blocks, *fallback_parser.blocks, *panel_parser.blocks]:
         key = (tuple(heading_path), text)
         if key in seen:
             continue
@@ -256,9 +352,18 @@ def parse_sections(html: str, source_url: str) -> list[SectionBlock]:
 
 def parse_cached_pages(cache_dir: Path) -> list[SectionBlock]:
     blocks: list[SectionBlock] = []
+    seen_html_hashes: set[str] = set()
+    metadata_records = []
     for metadata_path in sorted(cache_dir.glob("*.json")):
         metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        metadata_records.append(metadata)
+    metadata_records.sort(key=lambda metadata: (1 if urlparse(metadata["url"]).fragment else 0, metadata["url"]))
+    for metadata in metadata_records:
         html_path = Path(metadata["html_path"])
         html = html_path.read_text(encoding="utf-8")
+        html_hash = hashlib.sha256(html.encode("utf-8")).hexdigest()
+        if html_hash in seen_html_hashes:
+            continue
+        seen_html_hashes.add(html_hash)
         blocks.extend(parse_sections(html, metadata["url"]))
     return blocks

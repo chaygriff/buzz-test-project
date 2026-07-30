@@ -76,6 +76,49 @@ class RelationshipNormalizerTests(unittest.TestCase):
 
         self.assertEqual(normalize_relationships(blocks), [])
 
+    def test_normalizes_generic_alumni_panel_rows(self):
+        examples = [
+            ("Shruti Agarwal (Ph.D., 2021)", "phd_student", "PhD", 2021),
+            ("Tiago Carvalho (visiting Ph.D. student, UNICAMP, Brazil, 2014)", "visitor", "PhD", 2014),
+            ("Wei Fan (postdoc, 2018)", "postdoc", None, 2018),
+            ("Emma Chiu '19", "undergraduate_student", "BSc", 2019),
+        ]
+
+        for text, relationship, degree, graduation_year in examples:
+            with self.subTest(text=text):
+                record = normalize_relationship_block(
+                    SectionBlock(
+                        source_url="https://hfarid.org/#alumniDiv",
+                        heading_path=["Alumni"],
+                        text=text,
+                    ),
+                    faculty_name="Hany Farid",
+                    faculty_institution="Dartmouth College",
+                    faculty_homepage="https://hfarid.org/",
+                )
+
+                self.assertIsNotNone(record)
+                self.assertEqual(record.normalized_relationship, relationship)
+                self.assertEqual(record.status, "alumni")
+                self.assertEqual(record.degree, degree)
+                self.assertEqual(record.end_year, graduation_year)
+                self.assertEqual(record.graduation_year, graduation_year if degree else None)
+                self.assertEqual(record.page_section, "Alumni")
+
+    def test_sets_profile_url_for_generic_alumni_panel_link(self):
+        block = SectionBlock(
+            source_url="https://hfarid.org/#alumniDiv",
+            heading_path=["Alumni"],
+            text="Justin Norman (Ph.D., 2026)",
+            links=[EvidenceLink(text="Justin Norman", url="https://justintime.ai")],
+        )
+
+        record = normalize_relationship_block(block)
+
+        self.assertIsNotNone(record)
+        self.assertEqual(record.person_name, "Justin Norman")
+        self.assertEqual(record.person_profile_url, "https://justintime.ai")
+
 
 if __name__ == "__main__":
     unittest.main()

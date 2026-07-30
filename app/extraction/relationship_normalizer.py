@@ -49,11 +49,10 @@ def normalize_relationship_block(
     faculty_institution: str | None = None,
     faculty_homepage: str | None = None,
 ) -> RelationshipRecord | None:
-    if len(block.heading_path) < 2 or block.heading_path[0].lower() != "students supervised":
+    category = relationship_category_for_block(block)
+    if category is None:
         return None
-
-    category = block.heading_path[1]
-    normalized_relationship, status, degree = relationship_from_category(category)
+    normalized_relationship, status, degree = relationship_from_block(block, category)
     if normalized_relationship is None:
         return None
     person_name = extract_person_name(block.text)
@@ -89,12 +88,49 @@ def relationship_from_category(category: str) -> tuple[str | None, str | None, s
     return RELATIONSHIP_BY_CATEGORY.get(normalize_category(category), (None, None, None))
 
 
+def relationship_category_for_block(block: SectionBlock) -> str | None:
+    if len(block.heading_path) >= 2 and block.heading_path[0].lower() == "students supervised":
+        return block.heading_path[1]
+    if block.heading_path and normalize_category(block.heading_path[0]) == "alumni":
+        return block.heading_path[0]
+    return None
+
+
+def relationship_from_block(block: SectionBlock, category: str) -> tuple[str | None, str | None, str | None]:
+    if normalize_category(category) == "alumni":
+        return infer_alumni_relationship(block.text)
+    return relationship_from_category(category)
+
+
+def infer_alumni_relationship(text: str) -> tuple[str | None, str | None, str | None]:
+    normalized = normalize_category(text)
+    if "visiting ph.d. student" in normalized or "visiting phd student" in normalized:
+        return ("visitor", "alumni", "PhD")
+    if "visiting m.s. student" in normalized or "visiting ms student" in normalized:
+        return ("visitor", "alumni", "MSc")
+    if "visiting professor" in normalized:
+        return ("visitor", "alumni", None)
+    if "m.d./ph.d." in normalized or "md/phd" in normalized:
+        return ("phd_student", "alumni", "MD/PhD")
+    if "ph.d." in normalized or "phd" in normalized:
+        return ("phd_student", "alumni", "PhD")
+    if "m.s." in normalized or "ms" in normalized:
+        return ("masters_student", "alumni", "MSc")
+    if "postdoc" in normalized:
+        return ("postdoc", "alumni", None)
+    if re.search(r"\B'\d{2}\b", text):
+        return ("undergraduate_student", "alumni", "BSc")
+    if "programmer" in normalized:
+        return ("staff", "alumni", None)
+    return ("alum", "alumni", None)
+
+
 def normalize_category(category: str) -> str:
     return re.sub(r"\s+", " ", category.lower()).strip()
 
 
 def extract_person_name(text: str) -> str | None:
-    name = text.split(",", 1)[0].strip()
+    name = re.split(r"\s*(?:,|\(|')", text, maxsplit=1)[0].strip()
     return name or None
 
 
@@ -126,7 +162,19 @@ def extract_start_year(text: str) -> int | None:
 
 def extract_end_year(text: str) -> int | None:
     range_match = re.search(r"\b(?:19|20)\d{2}\s*[-–]\s*((?:19|20)\d{2})\b", text)
-    return int(range_match.group(1)) if range_match else None
+    if range_match:
+        return int(range_match.group(1))
+    if re.search(r"\b(?:19|20)\d{2}\s*[-–]", text):
+        return None
+    if re.search(r"\b(?:ph\.?d|m\.?s|postdoc|visiting|programmer|m\.d\./ph\.d\.)\b", text, flags=re.IGNORECASE):
+        years = re.findall(r"\b((?:19|20)\d{2})\b", text)
+        if years:
+            return int(years[-1])
+    class_year_match = re.search(r"\B'(\d{2})\b", text)
+    if class_year_match:
+        year = int(class_year_match.group(1))
+        return 1900 + year if year >= 50 else 2000 + year
+    return None
 
 
 def extract_co_advisor(text: str) -> str | None:
