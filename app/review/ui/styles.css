@@ -261,7 +261,7 @@ select:hover {
 
 table {
   width: 100%;
-  min-width: 980px;
+  min-width: 1080px;
   border-collapse: collapse;
   font-size: 0.84rem;
 }
@@ -351,6 +351,65 @@ tbody tr.active {
 .tag.low {
   background: var(--gray-100);
   color: var(--gray-700);
+}
+
+.confidence-badge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  min-width: 74px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.45;
+  white-space: nowrap;
+}
+
+.confidence-badge strong {
+  font-size: 0.82rem;
+}
+
+.confidence-badge.high {
+  background: #e4f5e9;
+  color: #12805c;
+}
+
+.confidence-badge.medium {
+  background: var(--yellow-100);
+  color: #74600f;
+}
+
+.confidence-badge.low {
+  background: var(--red-100);
+  color: var(--red-700);
+}
+
+.confidence-badge.needs_review {
+  background: #e8f2ff;
+  color: var(--blue-700);
+}
+
+.confidence-reasons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 0 0 8px;
+}
+
+.confidence-reasons span {
+  border-radius: 999px;
+  background: var(--gray-100);
+  color: var(--gray-700);
+  padding: 2px 7px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.confidence-reasons .penalty {
+  background: var(--red-100);
+  color: var(--red-700);
 }
 
 .muted {

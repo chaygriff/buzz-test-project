@@ -1981,8 +1981,8 @@
     },
     {
       "person_id": "person:c72815917a515331",
-      "display_name": "Jean-Pe\u00efc Chou",
-      "name_key": "jean-pe\u00efc chou",
+      "display_name": "Jean-Peïc Chou",
+      "name_key": "jean-peïc chou",
       "profile_urls": [
         "https://www.linkedin.com/in/jeanpeicchou/"
       ],
@@ -2518,7 +2518,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 72,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:f2687fab533646d1",
@@ -2541,7 +2556,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 72,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:4b3d07c52570ccd4",
@@ -2564,7 +2594,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 53,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_google_scholar",
+        "has_linkedin",
+        "has_short_biography"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:bf7f7582bfac8ae3",
@@ -2587,7 +2632,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 72,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:80386ce0eefac53a",
@@ -2610,7 +2670,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 56,
+      "confidence_bucket": "needs_review",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "relationship_review_needed"
+      ]
     },
     {
       "relationship_id": "rel:a7a16d8ce19ccb43",
@@ -2633,7 +2708,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 75,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:75ef0852e2d15051",
@@ -2656,7 +2746,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 75,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:7a87dbb05afb7268",
@@ -2679,7 +2784,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 75,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:d3b62c3867a38d59",
@@ -2702,7 +2822,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 70,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:b94e78e40b9b18ec",
@@ -2725,7 +2860,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 74,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:59b10d78ec679fcd",
@@ -2748,7 +2898,23 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 50,
+      "confidence_bucket": "needs_review",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "profile_reconciliation_needed",
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:c3b418b4b580e163",
@@ -2771,7 +2937,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 74,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:c22c6d4179f05248",
@@ -2794,7 +2975,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 75,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:d87f3cfcd7d817c6",
@@ -2817,7 +3013,20 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 68,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_short_biography"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:95ff90b49840b1e0",
@@ -2840,7 +3049,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 75,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:9422a1a48fb2c146",
@@ -2863,7 +3087,23 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 49,
+      "confidence_bucket": "needs_review",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "profile_reconciliation_needed",
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:03238c601fd8ad99",
@@ -2886,7 +3126,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 74,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:a56ea0885649649d",
@@ -2909,7 +3164,23 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 49,
+      "confidence_bucket": "needs_review",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "profile_reconciliation_needed",
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:4bfed0e5c86353d1",
@@ -2932,7 +3203,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 74,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:bf6888d7b01bdecb",
@@ -2955,7 +3241,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 72,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:bd514d7cbfe63cbc",
@@ -2978,7 +3279,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 69,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:c9fbad524166c1f8",
@@ -3001,7 +3317,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 69,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:acf95c3ae90f1976",
@@ -3024,7 +3355,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 69,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_personal_website",
+        "has_github",
+        "has_google_scholar"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:c37f06b41b9bbdc7",
@@ -3047,7 +3393,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 74,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:dbefdc58e7700299",
@@ -3070,7 +3431,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 62,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_personal_website",
+        "has_github",
+        "has_linkedin"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:a50811fb335edb14",
@@ -3093,7 +3469,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 74,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:1215d7721bdc73c6",
@@ -3116,7 +3507,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 69,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_google_scholar"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:44e8f8fff3d17b5b",
@@ -3139,7 +3545,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 69,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_google_scholar"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:d493d36dcdf6819a",
@@ -3162,7 +3583,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 74,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:79c2b0c43c87f082",
@@ -3185,7 +3621,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 64,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_google_scholar"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:48e5000d3374f6d0",
@@ -3208,7 +3659,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 69,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_google_scholar"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:402744c01d2d3bc6",
@@ -3231,7 +3697,23 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 49,
+      "confidence_bucket": "needs_review",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "profile_reconciliation_needed",
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:aae4dc8c67604410",
@@ -3254,7 +3736,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 69,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:9f01f572bacafef9",
@@ -3277,7 +3774,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 69,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_google_scholar"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:67c35a9998baf574",
@@ -3300,7 +3812,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 74,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:465b3a4940124e4d",
@@ -3323,7 +3850,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 74,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:c68a300d0c5ebf21",
@@ -3346,7 +3888,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 77,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:b533ac6a097b18a3",
@@ -3369,7 +3926,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 66,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_personal_website",
+        "has_google_scholar",
+        "has_linkedin"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:67ba2f65279649f1",
@@ -3392,7 +3964,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 65,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_personal_website",
+        "has_google_scholar",
+        "has_linkedin"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:78ab64f6423b7f31",
@@ -3415,7 +4002,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 72,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_google_scholar"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:a4f794e3f51ee0cd",
@@ -3438,7 +4040,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 71,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_personal_website",
+        "has_github",
+        "has_google_scholar"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:77a51ab07b6d8f01",
@@ -3461,7 +4078,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 71,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_personal_website",
+        "has_github",
+        "has_google_scholar"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:5f8eeb9c3f2980d0",
@@ -3484,7 +4116,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 72,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:2c1a5d69ce4c05c5",
@@ -3507,7 +4154,20 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 83,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:9c6115a30c4646c1",
@@ -3530,7 +4190,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 64,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_google_scholar",
+        "has_linkedin"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:96d2adb8362778e5",
@@ -3553,7 +4228,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 72,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_google_scholar"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:3f1082ba7bd9dfbf",
@@ -3576,7 +4266,20 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 87,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:b3370ffae1f922e1",
@@ -3599,7 +4302,20 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 78,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:a1e926de02ed00d3",
@@ -3622,7 +4338,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 63,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_google_scholar",
+        "has_linkedin"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:853c02374fcbced4",
@@ -3645,7 +4376,20 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 78,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:431df0cab13ffb45",
@@ -3668,7 +4412,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 77,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:7e77a753da356505",
@@ -3691,7 +4450,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 22,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:bbe6087ab436f895",
@@ -3714,7 +4490,20 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 83,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:e68cad28710fc40c",
@@ -3737,7 +4526,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 21,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:cbf9f2d454a50999",
@@ -3760,7 +4566,20 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 74,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_linkedin"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:2157344dd947ca8e",
@@ -3783,7 +4602,20 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 77,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:6c39362c8b864ecc",
@@ -3806,7 +4638,20 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 77,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:0e885b6e10900efb",
@@ -3829,7 +4674,20 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 77,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:591210582c177131",
@@ -3852,7 +4710,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 67,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:c49b3c83513667f9",
@@ -3875,7 +4748,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:f858188bdb5c4c96",
@@ -3898,7 +4788,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:b2452726413ade6e",
@@ -3921,7 +4828,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 72,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:b6885311b57c29a2",
@@ -3944,7 +4866,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:401a71e00bb68f46",
@@ -3967,7 +4906,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:ff6665f14990b61f",
@@ -3990,7 +4946,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 72,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:05620837a0b8999f",
@@ -4013,7 +4984,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 72,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:0feebd6f79405b04",
@@ -4036,7 +5022,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:80b254447c6182f7",
@@ -4059,7 +5062,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:83b661b10be18b79",
@@ -4082,7 +5102,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:0ff27a3c190bff34",
@@ -4105,7 +5142,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 72,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:3fcd175a9e1700f0",
@@ -4128,7 +5180,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:2ed83bef63f82c92",
@@ -4151,7 +5220,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:f17a714d2f7cb295",
@@ -4174,7 +5260,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 72,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:2cb543c746383389",
@@ -4197,7 +5298,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:28c49b290e9e6408",
@@ -4220,7 +5338,22 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 67,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "profile_verified",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "missing_profile_url"
+      ]
     },
     {
       "relationship_id": "rel:8083d40cb3d22c4d",
@@ -4243,7 +5376,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:4605f55ab53abbcb",
@@ -4266,7 +5416,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:aec8b5d1324de818",
@@ -4289,7 +5456,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:800f0a45fa3a0dcf",
@@ -4312,7 +5496,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:dc546a3f0bd16573",
@@ -4335,7 +5536,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:5225e1892e2e90cf",
@@ -4358,7 +5576,20 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 75,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:b207cb4175470f87",
@@ -4381,7 +5612,20 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 75,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:3022a46e7c41385a",
@@ -4404,7 +5648,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:afc31deff1de792a",
@@ -4427,7 +5688,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:5a3a7812f320c5c1",
@@ -4450,7 +5728,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:3ed81d1e8551c73b",
@@ -4473,7 +5768,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:1b8086afadf7a71d",
@@ -4496,7 +5808,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:af1831ce2c33f0e7",
@@ -4519,7 +5848,24 @@
       "verification_status": "parsed",
       "dataset_key": "gordon_wetzstein",
       "dataset_label": "Gordon Wetzstein pilot",
-      "professor_name": "Gordon Wetzstein"
+      "professor_name": "Gordon Wetzstein",
+      "confidence_score": 17,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "parsed",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status",
+        "has_year_context"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:8c4a3243600a668c",
@@ -4542,7 +5888,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 74,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:31306b1010ded56c",
@@ -4565,7 +5924,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 62,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:362249651f247334",
@@ -4588,7 +5960,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 74,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:0261ebfd629e975a",
@@ -4611,7 +5996,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 80,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:23bae96622c0a2b8",
@@ -4634,7 +6032,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 80,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:8f971310fded4233",
@@ -4657,7 +6068,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 83,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:c371d879f53760cf",
@@ -4680,7 +6104,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 82,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:6c35fece41f8740a",
@@ -4703,7 +6140,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 63,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:d8b567253a8a1264",
@@ -4726,7 +6176,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 82,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:cd652e803032eec8",
@@ -4749,7 +6212,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 83,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:6d045303c6e34664",
@@ -4772,7 +6248,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 80,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:dd69f5470e4128a5",
@@ -4795,7 +6284,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 82,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:cdef4abf952b04f6",
@@ -4818,7 +6320,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 80,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:5f6be102c65ec4af",
@@ -4841,7 +6356,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 81,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:1e41333fcee594e7",
@@ -4864,7 +6392,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 80,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:b556bfc00f2c3b6c",
@@ -4887,7 +6428,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 62,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:b12a8c07a01e171b",
@@ -4910,7 +6464,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 74,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:324bbc8099ce884b",
@@ -4933,7 +6500,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 81,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:7dabe0b7e1c29a98",
@@ -4956,7 +6536,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 79,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:319775ccf05a1797",
@@ -4979,7 +6572,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 81,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:718dc25b38edb86b",
@@ -5002,7 +6608,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 73,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:ee666d63fbf6cf64",
@@ -5025,7 +6644,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 78,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:ab602eeb8ba0a990",
@@ -5048,7 +6680,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 86,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:7b64739c6f13afef",
@@ -5071,7 +6716,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 88,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:c25e650e3c7f5b63",
@@ -5094,7 +6752,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 87,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:47c249e86aa4b870",
@@ -5117,7 +6788,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 88,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:e3a62c5e039138b6",
@@ -5140,7 +6824,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 88,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:bc9073ff254c8489",
@@ -5163,7 +6860,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 83,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:e5aef840bd4da716",
@@ -5186,7 +6896,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 84,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:bfbdb045b65e1035",
@@ -5209,7 +6932,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 86,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:7f7d2192947ff84b",
@@ -5232,7 +6968,22 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 56,
+      "confidence_bucket": "needs_review",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": [
+        "relationship_review_needed"
+      ]
     },
     {
       "relationship_id": "rel:5446c1c1bc586a0f",
@@ -5255,7 +7006,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 83,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:edd8cfe5b7ebdad0",
@@ -5278,7 +7042,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 83,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:a4c6d921294f6668",
@@ -5301,7 +7078,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 81,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:ce9154536071901b",
@@ -5324,7 +7114,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 88,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:d3095048ca49dd1b",
@@ -5347,7 +7150,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 84,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:5e0c6b2a290d3366",
@@ -5370,7 +7186,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 84,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:a262e4725fe3de62",
@@ -5393,7 +7222,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 86,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:5423edd456dfecc4",
@@ -5416,7 +7258,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 83,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:86c9f73c8e85db1a",
@@ -5439,7 +7294,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "jiajun_wu",
       "dataset_label": "Jiajun Wu pilot",
-      "professor_name": "Jiajun Wu"
+      "professor_name": "Jiajun Wu",
+      "confidence_score": 78,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:25852d56ed5db8c4",
@@ -5462,7 +7330,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 80,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:4aa532dacdfd9349",
@@ -5485,7 +7366,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 61,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:d5dc59eee45b59d5",
@@ -5508,7 +7402,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 58,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_linkedin",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:ae56cd27f82d4c18",
@@ -5531,7 +7438,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 78,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:7322c67de03ff821",
@@ -5554,7 +7474,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 77,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:5b989acc539e5137",
@@ -5577,7 +7510,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 61,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:facc6634e842eac5",
@@ -5600,7 +7546,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 80,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:30b07c8c27746954",
@@ -5623,7 +7582,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 73,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:e4792bd8923c25b1",
@@ -5646,7 +7618,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 80,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:703af1481e87ae2b",
@@ -5669,7 +7654,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 80,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:795b46b4d3cbe861",
@@ -5692,7 +7690,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 78,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:ef3523c3f07a56da",
@@ -5715,7 +7726,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 72,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:848665962f1db1c1",
@@ -5738,7 +7762,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 71,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:32b300ec2ec2d6ea",
@@ -5761,7 +7798,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 61,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:0e3ac8de374ed49b",
@@ -5784,7 +7834,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 58,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_linkedin",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:3296ceade53c1870",
@@ -5807,7 +7870,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 61,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:f25e46d0d4c7cf53",
@@ -5830,7 +7906,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 72,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:9c78685cc047f1be",
@@ -5853,7 +7942,23 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 14,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:37e479ed2e67c75f",
@@ -5876,7 +7981,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 72,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:d02258362c82c791",
@@ -5899,7 +8017,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 78,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:dbb57e767b07c55a",
@@ -5922,7 +8053,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 73,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:d846113b2c61ab6f",
@@ -5945,7 +8089,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 61,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:35c557346bb010f3",
@@ -5968,7 +8125,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 78,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:a349ba772c43b661",
@@ -5991,7 +8161,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 58,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_linkedin",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:f3e8d483f2de0326",
@@ -6014,7 +8197,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 61,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:e6f415bce8ebed88",
@@ -6037,7 +8233,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 73,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:8696d71e942d0ce6",
@@ -6060,7 +8269,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 58,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_linkedin",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:8b51cf78c79d2535",
@@ -6083,7 +8305,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 78,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:6c31ec13fe8d0a06",
@@ -6106,7 +8341,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 61,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:1192cc9b5f41aa99",
@@ -6129,7 +8377,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 64,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_google_scholar",
+        "has_linkedin"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:e16b306d882d9646",
@@ -6152,7 +8413,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 61,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:df804c64e21ff56d",
@@ -6175,7 +8449,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 61,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:9187354861ccaedc",
@@ -6198,7 +8485,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 61,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:cd0bf6437c1bf849",
@@ -6221,7 +8521,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 80,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:c3130f7a003d714f",
@@ -6244,7 +8557,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 73,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:7cb514e9bd39d62b",
@@ -6267,7 +8593,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 78,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:0ed65e1b8a75d556",
@@ -6290,7 +8629,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 58,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_linkedin",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:a85120b75bba4b7e",
@@ -6313,7 +8665,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 58,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_linkedin",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:2ff2b2bdd1545900",
@@ -6336,7 +8701,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 61,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:50e937fb5f616c81",
@@ -6359,7 +8737,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 58,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_linkedin",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:0265eb881aa939cc",
@@ -6382,7 +8773,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 73,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:33ebde98ebf60f42",
@@ -6405,7 +8809,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 78,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:e2a6c253cfbbee45",
@@ -6428,7 +8845,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 61,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:9ea846c26384f754",
@@ -6451,7 +8881,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 61,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:4c47c49da478349f",
@@ -6474,7 +8917,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 73,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:d306e3b5ad7e4e4a",
@@ -6497,7 +8953,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 80,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:ef37888d1443c89c",
@@ -6520,7 +8989,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 77,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_github"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:2d9669c5ad3515a7",
@@ -6543,7 +9025,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 72,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:8297c2eff84d2005",
@@ -6566,7 +9061,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 61,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:22619b261fcd7d37",
@@ -6589,7 +9097,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 58,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_linkedin",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:13c898bf8771db4e",
@@ -6612,7 +9133,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 58,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_linkedin",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:b07e893ffb3a5179",
@@ -6635,7 +9169,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 61,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_personal_website",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:be90a193d5f75a5d",
@@ -6658,7 +9205,23 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 14,
+      "confidence_bucket": "low",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_source_affiliation",
+        "has_relationship_type_and_status"
+      ],
+      "confidence_penalties": [
+        "profile_backfill_queued",
+        "missing_profile_url",
+        "missing_profile_enrichment"
+      ]
     },
     {
       "relationship_id": "rel:e616cd48d108ff3c",
@@ -6681,7 +9244,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 73,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:3dcd2eb195315ace",
@@ -6704,7 +9280,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 80,
+      "confidence_bucket": "high",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "profile_verified",
+        "has_personal_website"
+      ],
+      "confidence_penalties": []
     },
     {
       "relationship_id": "rel:b69f35f44a10b300",
@@ -6727,7 +9316,20 @@
       "verification_status": "source_roster_verified",
       "dataset_key": "maneesh_agrawala",
       "dataset_label": "Maneesh Agrawala pilot",
-      "professor_name": "Maneesh Agrawala"
+      "professor_name": "Maneesh Agrawala",
+      "confidence_score": 58,
+      "confidence_bucket": "medium",
+      "confidence_reasons": [
+        "source_roster_verified",
+        "parser_confidence_present",
+        "has_evidence_text",
+        "has_source_url",
+        "has_source_section",
+        "has_profile_url",
+        "has_linkedin",
+        "has_homepage_claimed_name"
+      ],
+      "confidence_penalties": []
     }
   ],
   "organizations": [
@@ -9124,7 +11726,7 @@
       "relationship_id": "rel:d5dc59eee45b59d5",
       "source_url": "https://graphics.stanford.edu/~maneesh/",
       "source_section": "Homepage left panel > Students, Postdocs & Visitors",
-      "evidence_text": "Jean-Pe\u00efc Chou, Stanford University, Students, Postdocs & Visitors",
+      "evidence_text": "Jean-Peïc Chou, Stanford University, Students, Postdocs & Visitors",
       "retrieved_at": "2026-07-30T01:21:19+00:00",
       "parser_version": null,
       "raw_cache_key": null,
@@ -13121,7 +15723,7 @@
       "enrichment_id": "enrichment:5ebe7bbc332c367e",
       "candidate_id": "manual_candidate:23beb6f230da138a",
       "person_id": "person:c72815917a515331",
-      "person_name": "Jean-Pe\u00efc Chou",
+      "person_name": "Jean-Peïc Chou",
       "candidate_url": "https://www.linkedin.com/in/jeanpeicchou/",
       "final_url": "https://www.linkedin.com/in/jeanpeicchou/",
       "source_type": "source_roster_direct_linkedin_preserved",
@@ -13130,14 +15732,14 @@
       "status_code": null,
       "content_type": null,
       "profile_title": null,
-      "homepage_claimed_name": "Jean-Pe\u00efc Chou",
+      "homepage_claimed_name": "Jean-Peïc Chou",
       "short_biography": null,
       "personal_website_url": null,
       "github_url": null,
       "google_scholar_url": null,
       "linkedin_url": "https://www.linkedin.com/in/jeanpeicchou/",
       "source_url": "https://graphics.stanford.edu/~maneesh/",
-      "evidence_text": "Maneesh Agrawala homepage directly links Jean-Pe\u00efc Chou to this LinkedIn profile; no separate candidate-owned homepage was available to inspect in this pass.",
+      "evidence_text": "Maneesh Agrawala homepage directly links Jean-Peïc Chou to this LinkedIn profile; no separate candidate-owned homepage was available to inspect in this pass.",
       "retrieved_at": "2026-07-30T02:35:00+00:00",
       "verification_status": "source_roster_direct_linkedin",
       "dataset_key": "maneesh_agrawala",
