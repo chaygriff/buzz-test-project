@@ -54,6 +54,45 @@ def origin(url):
     return p.scheme + '://' + p.netloc
 
 
+def _robots_crawl_delay(lines, user_agent):
+    """Return the delay for the most-specific matching robots groups."""
+    groups = []
+    agents = []
+    delays = []
+    rules_started = False
+    for raw_line in lines:
+        line = raw_line.split('#', 1)[0].strip()
+        if not line:
+            continue
+        key, value = (part.strip() for part in line.split(':', 1))
+        key = key.lower()
+        if key == 'user-agent':
+            if rules_started:
+                groups.append((agents, delays))
+                agents, delays, rules_started = [], [], False
+            agents.append(value)
+        elif key in ('allow', 'disallow', 'crawl-delay'):
+            rules_started = True
+            if key == 'crawl-delay':
+                delays.append(int(value))
+    if rules_started:
+        groups.append((agents, delays))
+
+    product = user_agent.split('/', 1)[0].lower()
+    matching = []
+    for group_agents, group_delays in groups:
+        specificity = max((0 if agent == '*' else len(agent)
+                           for agent in group_agents
+                           if agent == '*' or agent.lower() in product), default=-1)
+        if specificity >= 0:
+            matching.append((specificity, group_delays))
+    if not matching:
+        return 0
+    best = max(specificity for specificity, _ in matching)
+    return max((delay for specificity, delays in matching if specificity == best
+                for delay in delays), default=0)
+
+
 class Fetcher:
     def __init__(self, approved_origins: set[str], delay_seconds=1.0, timeout=15.0, max_bytes=2_000_000, max_redirects=5):
         if type(max_bytes) is not int or max_bytes <= 0 or type(max_redirects) is not int or max_redirects < 0:
@@ -264,8 +303,8 @@ class Fetcher:
             code, text, allowed, robots_reason, parser = self._robots(robots_url, url)
             result['policy'].append(dict(url=robots_url, status_code=code, body=text, allowed=allowed,
                                          reason=robots_reason, timestamp=datetime.now(timezone.utc).isoformat()))
-            entries = parser.entries + ([parser.default_entry] if parser.default_entry else [])
-            crawl_delay = max((entry.delay or 0 for entry in entries if entry.applies_to('TalentPipelineCollector')), default=0)
+            crawl_delay = (_robots_crawl_delay(text.lstrip('\ufeff').splitlines(), 'TalentPipelineCollector')
+                           if robots_reason == 'robots_rules' else 0)
             self._delays[origin(url)] = max(self._delays.get(origin(url), 0), crawl_delay)
             if not allowed:
                 result['reason'] = 'robots_denied'

@@ -20,7 +20,7 @@ python3 -m venv .venv
 .venv/bin/talent-collect --help
 ```
 
-Latest full execution at this checkpoint after resolving the eighth-review findings: **419 passed, 76 subtests passed**. Focused regressions were observed failing before implementation and passing afterward. New coverage includes immutable per-attempt snapshot provenance across retry success, terminal retry failure and process reopen; inline and embedded clipping/zero-size hiding; forged payload source attribution and invalid policy attempt domains; and valid requested-to-final redirects. Dependency, compilation, CLI-help and diff checks are recorded only from local commands; remote CI has not been run at this checkpoint.
+Latest full execution at this checkpoint after the deterministic crawl-delay fix: **424 passed, 78 subtests passed**. Focused regressions were observed failing before implementation and passing afterward. New coverage includes immutable per-attempt snapshot provenance across retry success, terminal retry failure and process reopen; inline and embedded clipping/zero-size hiding; forged payload source attribution and invalid policy attempt domains; valid requested-to-final redirects; and cross-version crawl-delay handling for wildcard, exact, combined, duplicate, irrelevant and reordered robots groups. Dependency, compilation, CLI-help and diff checks are recorded only from local commands; remote CI has not been run at this checkpoint.
 
 Focused tests cover:
 
