@@ -1,5 +1,10 @@
 __pycache__/
 *.py[cod]
+.venv/
+.pytest_cache/
+*.egg-info/
+build/
+dist/
 data/
 !app/review/ui/data/
 !app/review/ui/data/*.jsonl
