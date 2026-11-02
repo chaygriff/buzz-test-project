@@ -143,12 +143,50 @@ def response(code=200, body=b'<html>ok</html>', **headers):
 
 
 class FetchTests(unittest.TestCase):
+    def assert_crawl_delay(self, robots, expected):
+        f = FakeFetcher({'https://example.com/robots.txt': response(body=robots),
+                         'https://example.com/a': response()})
+        with patch('time.monotonic', return_value=0), patch('time.sleep') as sleep:
+            self.assertEqual(f.fetch('https://example.com/a')['status'], 'ok')
+        sleep.assert_called_once_with(expected)
+
+    def test_wildcard_crawl_delay_does_not_depend_on_stdlib_bookkeeping(self):
+        original_parse = network.RobotFileParser.parse
+
+        def parse_without_crawl_delay(parser, lines):
+            original_parse(parser, [line for line in lines
+                                    if not line.strip().lower().startswith('crawl-delay:')])
+
+        robots = b'User-agent: *\nCrawl-delay: 3\nAllow: /'
+        with patch.object(network.RobotFileParser, 'parse', parse_without_crawl_delay):
+            self.assert_crawl_delay(robots, 3)
+
     def test_robots_denial_still_updates_origin_crawl_delay(self):
         f = FakeFetcher({'https://example.com/robots.txt': response(body=b'User-agent: *\nCrawl-delay: 3\nDisallow: /')})
         with patch('time.monotonic', return_value=0), patch('time.sleep') as sleep:
             self.assertEqual(f.fetch('https://example.com/a')['status'], 'blocked')
             self.assertEqual(f.fetch('https://example.com/b')['status'], 'blocked')
         sleep.assert_called_once_with(3)
+
+    def test_exact_agent_crawl_delay_takes_precedence_over_wildcard(self):
+        robots = b'User-agent: *\nCrawl-delay: 9\nAllow: /\n\nUser-agent: TalentPipelineCollector\nCrawl-delay: 2\nAllow: /'
+        self.assert_crawl_delay(robots, 2)
+
+    def test_consecutive_agents_form_one_crawl_delay_group(self):
+        robots = b'User-agent: OtherBot\nUser-agent: TalentPipelineCollector\nCrawl-delay: 4\nAllow: /'
+        self.assert_crawl_delay(robots, 4)
+
+    def test_irrelevant_agent_crawl_delay_is_ignored(self):
+        robots = b'User-agent: OtherBot\nCrawl-delay: 9\nAllow: /\n\nUser-agent: *\nCrawl-delay: 2\nAllow: /'
+        self.assert_crawl_delay(robots, 2)
+
+    def test_exact_agent_precedence_is_independent_of_group_order(self):
+        exact = 'User-agent: TalentPipelineCollector\nCrawl-delay: 2\nAllow: /'
+        wildcard = 'User-agent: *\nCrawl-delay: 9\nAllow: /'
+        for robots in ((exact + '\n\n' + wildcard).encode(),
+                       (wildcard + '\n\n' + exact).encode()):
+            with self.subTest(robots=robots):
+                self.assert_crawl_delay(robots, 2)
 
     def test_duplicate_matching_robots_groups_use_largest_delay(self):
         f = FakeFetcher({'https://example.com/robots.txt': response(body=b'User-agent: TalentPipelineCollector\nCrawl-delay: 1\nAllow: /\n\nUser-agent: TalentPipelineCollector\nCrawl-delay: 3\nAllow: /'),
